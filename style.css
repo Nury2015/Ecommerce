@@ -7,3 +7,11 @@
     --dark: #232830;
 
 }
+body{
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:700px;
+  font-style: normal;
+
+}
+
