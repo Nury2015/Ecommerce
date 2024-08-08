@@ -26,13 +26,26 @@ body{
 
     .title{
         font-size: var(--lg);
-        margin-bottom:40px ;
+        display: flex;
+        align-items: center;
     }
     .my-order-container{
         display: grid;
         grid-template-rows:auto 1fr auto ;
         width: 300px;
     }
+
+    .cabecera{
+        display: flex;
+        align-items: center;
+        margin-bottom:40px ; 
+    }
+
+    .my-order-container .cabecera img {
+        transform: rotate(180deg);
+        margin-right: 14px;
+        height: 15px;
+      }
 
     .my-order-content{
         display: flex;
@@ -49,6 +62,8 @@ body{
 
     .order img{
         margin-left: 8px;
+        transform: rotate(90deg);
+
     }
 
     .order p:nth-child(1){

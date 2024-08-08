@@ -97,6 +97,14 @@ nav {
     align-items: center;
 }
 
+.navbar-email a{
+    text-decoration: none;
+    font-size: var(--sm);
+    color: var(--very-light-pink);
+}
+
+
+
 @media (max-width:640px) {
     .menu{
         display: block; }
