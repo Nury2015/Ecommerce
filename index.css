@@ -46,7 +46,13 @@ nav>a{
     right: 12px;
 }
 
-.navbar-left {
+.navbar-left  {
+    display: flex;
+    margin-left: 12px;
+}
+
+
+.navbar-left a{
     display: flex;
     margin-left: 12px;
 }

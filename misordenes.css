@@ -17,6 +17,13 @@ body{
     font-style: normal;
     }
 
+    .navbar-left  {
+        display: flex;
+        margin-left: 12px;
+    }
+    
+
+
     .my-order{
         width: 100%;
         height: 100vh;
