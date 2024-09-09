@@ -79,17 +79,33 @@ body{
         font-size: var(--md);
         font-weight: bold;
       }
-      .primary-button {
-        background-color: var(--hospital-green);
-        border-radius: 8px;
-        border: none;
-        color: var(--white);
-        width: 100%;
-        cursor: pointer;
+      .my-order-content .boton{
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+      }
+      .verificar{
+        display: flex;
+        justify-content: center;
+        
+      }
+      .boton {
+        padding: 10px 20px;
         font-size: var(--md);
         font-weight: bold;
+        color: var(--white);
+        width: 70%;
         height: 50px;
-      }
+        cursor: pointer;
+        background-color:var(--hospital-green);
+        border: none;
+        border-radius: 8px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+
+
       @media (max-width: 640px) {
         .product-detail {
           width: 100%;
