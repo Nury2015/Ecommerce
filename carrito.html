@@ -1,47 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="carrito.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decayba ‑ Carrito</title>
+  <link rel="stylesheet" href="carrito.css"><!-- tu hoja externa sigue funcionando -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  
+  <!-- Ajustes rápidos para centrar y mejorar aspecto -->
+  <style>
+    body{
+      font-family:"Quicksand",sans-serif;
+      display:flex;
+      justify-content:center;
+      padding:2rem 1rem;
+      background:#fff;
+      min-height:100vh;
+    }
+    .product-detail{
+      width:100%;
+      max-width:420px;
+    }
+    .gracias{margin:1rem 0;text-align:center;color:#333;font-size:1.05rem;}
+    .bienvenida{display:none;}
+    /* Ocultar botón WhatsApp por defecto (lo mostraremos por JS) */
+    #btn-whatsapp{display:none;}
+  </style>
 </head>
 <body>
+  <aside class="product-detail">
+    <div class="title-container">
+      <a href="order.html"><img src="./icons/flechita.svg" alt="Volver"></a>
+      <p class="title">Mi pedido</p>
+    </div>
 
-    <aside class="product-detail">
-        <div class="title-container">
-          <a href="order.html">
-            <img src="./icons/flechita.svg" alt="arrow">
+    <p id="gracias-compra" class="gracias">¡Gracias por tu compra, Decayba 💖!</p>
 
-          </a>
-          
-          <p class="title">My order</p>
+    <!-- Carrito -->
+    <div class="my-order-content" id="cart-content"></div>
+
+    <!-- Botón WhatsApp -->
+    <div class="verificar">
+      <a href="#" class="boton" id="btn-whatsapp">Enviar por WhatsApp</a>
+    </div>
+
+    <!-- Sugerencias -->
+    <div class="sugerencias">
+      <h3>¿Te puede interesar?</h3>
+      <div class="mini-cards">
+        <div>
+          <img src="img/producto1.jpg" alt="producto sugerido">
+          <p>Pulsera natural</p>
         </div>
-    
-        <div class="my-order-content">
-          
-          <div class="shopping-cart">
-            <figure>
-              <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
-            </figure>
-            <p>Bike</p>
-            <p>$30,00</p>
-            <img src="./icons/icon_close.png" alt="close">
-          </div>
-
-          <div class="verificar">
-            <a href="Login.html" class="boton">Verificar</a>
-
-          </div>
-         
-         
+        <div>
+          <img src="img/producto2.jpg" alt="producto sugerido">
+          <p>Brochas de maquillaje</p>
         </div>
       </div>
-      </aside>
-    
+    </div>
+  </aside>
+
+  <script>
+    /* === Estado & referencias === */
+    const cart = JSON.parse(localStorage.getItem('carrito')) || [];
+    const cartContent   = document.getElementById('cart-content');
+    const graciasCompra = document.getElementById('gracias-compra');
+    const btnWhatsapp   = document.getElementById('btn-whatsapp');
+
+    /* === Render principal === */
+    function renderCart(){
+      cartContent.innerHTML = '';
+
+      if(cart.length === 0){
+        /* Carrito vacío */
+        graciasCompra.style.display  = 'none';
+        btnWhatsapp.style.display    = 'none';
+
+        cartContent.innerHTML = `
+          <div style="text-align:center;opacity:.6;margin-top:2rem;">
+            <img src="img/carritoVacio.png" alt="Carrito vacío" style="max-width:100px;">
+            <p>Tu carrito está vacío</p>
+          </div>`;
+        return;
+      }
+
+      /* Carrito con productos */
+      graciasCompra.style.display  = 'block';
+      btnWhatsapp.style.display    = 'inline-block';
+
+      let total = 0;
+
+      cart.forEach((item,index)=>{
+        const div = document.createElement('div');
+        div.classList.add('shopping-cart');
+        div.innerHTML = `
+          <figure>
+            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="producto">
+          </figure>
+          <p>${item.nombre} × ${item.cantidad}</p>
+          <p><strong>$${item.precio.toLocaleString()}</strong></p>
+          <img src="./icons/icon_close.png" alt="Eliminar" data-index="${index}" class="btn-remove">`;
+        cartContent.appendChild(div);
+        total += item.precio * item.cantidad;
+      });
+
+      // Total
+      const totalDiv = document.createElement('div');
+      totalDiv.classList.add('total');
+      totalDiv.innerHTML = `<p><strong>Total:</strong> $${total.toLocaleString()}</p>`;
+      cartContent.appendChild(totalDiv);
+
+      // Listeners para eliminar
+      document.querySelectorAll('.btn-remove').forEach(btn=>{
+        btn.addEventListener('click',e=>{
+          const idx = Number(e.target.dataset.index);
+          cart.splice(idx,1);
+          localStorage.setItem('carrito',JSON.stringify(cart));
+          renderCart();
+        });
+      });
+    }
+
+    /* === WhatsApp === */
+    btnWhatsapp.addEventListener('click',e=>{
+      e.preventDefault();
+      const numero = '573001234567'; // Cambia por tu núm real
+      const productos = cart.map(i=>`${i.nombre} × ${i.cantidad}`).join(', ');
+      const total = cart.reduce((acc,i)=>acc+i.precio*i.cantidad,0);
+      const msg = encodeURIComponent(`Hola, quiero comprar: ${productos}. Total: $${total.toLocaleString()}`);
+      window.open(`https://wa.me/${numero}?text=${msg}`,'_blank');
+    });
+
+    /* === Init === */
+    renderCart();
+  </script>
 </body>
 </html>

@@ -16,6 +16,48 @@ body{
     font-weight:700px;
     font-style: normal;
     }
+
+  .bienvenida {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #333;
+        margin: 1rem 0;
+      }
+      .sugerencias {
+        margin-top: 2rem;
+        text-align: center;
+      }
+      .mini-cards {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .mini-cards div {
+        width: 100px;
+      }
+      .mini-cards img {
+        width: 100%;
+        border-radius: 8px;
+      }
+      .mini-cards p {
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
+      }
+      .shopping-cart {
+        animation: fadeInUp 0.4s ease;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
     .product-detail {
         width: 360px;
         padding: 24px;

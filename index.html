@@ -481,8 +481,44 @@
     </section>
 
     <footer>
-        oeo
+         © <span id="year"></span> DECAYBA · Hecho con ❤ 
     </footer>
+
+    <script>
+  // Simulación de carrito
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  function actualizarCarritoVisual() {
+    const cartCountDiv = document.querySelector('.navbar-shopping-cart div');
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    cartCountDiv.textContent = totalItems;
+  }
+
+  function agregarAlCarrito(nombre, precio) {
+    const productoExistente = carrito.find(item => item.nombre === nombre);
+    if (productoExistente) {
+      productoExistente.cantidad += 1;
+    } else {
+      carrito.push({ nombre, precio, cantidad: 1 });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarCarritoVisual();
+  }
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.querySelector('figure a').addEventListener('click', e => {
+      e.preventDefault(); // Evita que redirija
+      const nombre = card.querySelector('.informacion-producto p:nth-child(2)').textContent;
+      const precioTexto = card.querySelector('.informacion-producto p:nth-child(1)').textContent;
+      const precio = Number(precioTexto.replace(/[^0-9]/g, '')); // $120.000 → 120000
+      agregarAlCarrito(nombre, precio);
+    });
+  });
+
+  actualizarCarritoVisual();
+</script>
+
 </body>
 
 </html>

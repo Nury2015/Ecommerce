@@ -1,7 +1,7 @@
 :root{
     --very-light-pink: #C7C7C7;
     --text-input-field: #F7F7F7;
-    --hospital-green: #ACD9B2;
+    --hospital-green:  #ACD9B2;
     --white:#FFFFFF;
     --black: #000000;
     --dark: #232830;
@@ -185,6 +185,15 @@ nav>a{
     .informacion-producto figure img{
         width: 40px;
         height: 40px;
+    }
+
+
+    footer{
+      text-align:center;
+      padding:1rem;
+      font-size:.85rem;
+      background:#fafafa;
+      color:#666;
     }
 
     @media  (max-width: 640px){
