@@ -14,7 +14,110 @@
 </head>
 
 <body>
+
+  <nav>
+    <a href="menumobile.html">
+
+      <img src="icons/icon_menu.svg" alt="menu" class="menu">
+    </a>
+
+
+    <div class="navbar-left">
+      <a href="index.html">
+
+        <img src="logos/logo_yard_sale.svg" alt="logo" class="logo">
+      </a>
+
+      <ul>
+        <li>
+          <a href="index.html">All</a>
+        </li>
+
+        <li>
+          <a href="index.html">Clothes</a>
+        </li>
+
+        <li>
+          <a href="index.html">Electronics</a>
+        </li>
+
+        <li>
+          <a href="index.html">Furnitures</a>
+        </li>
+
+        <li>
+          <a href="index.html">Toys</a>
+        </li>
+
+        <li>
+          <a href="index.html">Others</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul>
+
+        <li class="navbar-email">
+          <a href="editar-cuenta.html">
+
+            camila@gmail.com
+
+          </a>
+
+        </li>
+
+
+
+        <li class="navbar-shopping-cart">
+
+          <a href="carrito.html">
+            <img src="icons/icon_shopping_cart.svg" alt="shopping cart">
+            <div>2</div>
+          </a>
+
+
+
+        </li>
+
+      </ul>
+
+
+    </div>
+  </nav>
+  
   <div class="contenedor-carrito">
+
+
+
+    <div class="my-order" id="my-order">
+      <div class="my-order-container">
+
+        <div class="cabecera">
+          <a href="Misordenes.html">
+            <img src="icons/flechita.svg" alt="arrow">
+          </a>
+
+          <h1 class="title">
+            My Orders
+          </h1>
+        </div>
+
+        <div class="order" id="resumen-pedido">
+
+          <p>
+            <span>03.25.21</span>
+            <span>6 articles</span>
+          </p>
+          <p>$560.00</p>
+
+        </div>
+
+        <div class="list-shopping" id="list-shopping"></div>
+
+      </div>
+
+    </div>
     <aside class="product-detail">
       <div class="title-container">
         <a href="index.html"><img src="./icons/flechita.svg" alt="Volver"></a>
@@ -44,44 +147,15 @@
             <p>Brochas de maquillaje</p>
           </div>
         </div>
+
       </div>
     </aside>
-
-
-    <div class="my-order" id="my-order">
-      <div class="my-order-container">
-
-        <div class="cabecera">
-          <a href="Misordenes.html">
-            <img src="icons/flechita.svg" alt="arrow">
-          </a>
-
-          <h1 class="title">
-            My Orders
-          </h1>
-        </div>
-
-        <div class="my-order-content">
-          <div class="order">
-            <p>
-              <span>03.25.21</span>
-              <span>6 articles</span>
-            </p>
-            <p>$560.00</p>
-          </div>
-
-
-        </div>
-        <div class="list-shopping" id="list-shopping"></div>
-        
-      </div>
-
-    </div>
-
 
   </div>
 
   <script>
+
+
     /* === Estado & referencias === */
     const cart = JSON.parse(localStorage.getItem('carrito')) || [];
     const cartContent = document.getElementById('cart-content');
@@ -89,6 +163,7 @@
     const btnWhatsapp = document.getElementById('btn-whatsapp');
     const myOrder = document.getElementById('my-order');
     const listShopping = document.getElementById('list-shopping');
+    const resumen = document.getElementById('resumen-pedido');
 
 
     /* === Render principal === */
@@ -128,6 +203,7 @@
         cartContent.appendChild(div);
         total += item.precio * item.cantidad;
 
+
         const div2 = document.createElement('div');
         div2.classList.add('shopping-cart');
         div2.innerHTML = `
@@ -138,6 +214,24 @@
           <p><strong>$${item.precio.toLocaleString()}</strong></p>
         `;
         listShopping.appendChild(div2);
+
+
+        // Fecha actual formateada tipo "25/03/21"
+        const hoy = new Date();
+        const fecha = hoy.toLocaleDateString('es-CO');
+
+        // 2. Total de artículos (sumando todas las cantidades, no solo el número de productos)
+        const totalArticulos = cart.reduce((acc, item) => acc + item.cantidad, 0);
+
+        // 3. Insertar en el resumen
+
+        resumen.innerHTML = `
+          <p>
+            <span>${fecha}</span> <br>
+            <span>${totalArticulos} artículo${totalArticulos > 1 ? 's' : ''}</span>
+          </p>
+          
+        `;
 
       });
 
@@ -157,6 +251,7 @@
         });
       });
     }
+
 
     /* === WhatsApp === */
     btnWhatsapp.addEventListener('click', e => {
