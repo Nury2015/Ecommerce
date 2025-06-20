@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,128 +12,94 @@
 
 
 </head>
+
 <body>
   <div class="contenedor-carrito">
-  <aside class="product-detail">
-    <div class="title-container">
-      <a href="index.html"><img src="./icons/flechita.svg" alt="Volver"></a>
-      <p class="title">Mi pedido</p>
-    </div>
+    <aside class="product-detail">
+      <div class="title-container">
+        <a href="index.html"><img src="./icons/flechita.svg" alt="Volver"></a>
+        <p class="title">Mi pedido</p>
+      </div>
 
-    <p id="gracias-compra" class="gracias">¡Gracias por tu compra, Decayba 💖!</p>
+      <p id="gracias-compra" class="gracias">¡Gracias por tu compra 💖!</p>
 
-    <!-- Carrito -->
-    <div class="my-order-content" id="cart-content"></div>
+      <!-- Carrito -->
+      <div class="my-order-content" id="cart-content"></div>
 
-    <!-- Botón WhatsApp -->
-    <div class="verificar">
-      <a href="#" class="boton" id="btn-whatsapp">Enviar por WhatsApp</a>
-    </div>
+      <!-- Botón WhatsApp -->
+      <div class="verificar">
+        <a href="#" class="boton" id="btn-whatsapp">Enviar por WhatsApp</a>
+      </div>
 
-    <!-- Sugerencias -->
-    <div class="sugerencias">
-      <h3>¿Te puede interesar?</h3>
-      <div class="mini-cards">
-        <div>
-          <img src="img/producto1.jpg" alt="producto sugerido">
-          <p>Pulsera natural</p>
-        </div>
-        <div>
-          <img src="img/producto2.jpg" alt="producto sugerido">
-          <p>Brochas de maquillaje</p>
+      <!-- Sugerencias -->
+      <div class="sugerencias">
+        <h3>Te puede interesar</h3>
+        <div class="mini-cards">
+          <div>
+            <img src="img/producto1.jpg" alt="producto sugerido">
+            <p>Pulsera natural</p>
+          </div>
+          <div>
+            <img src="img/producto2.jpg" alt="producto sugerido">
+            <p>Brochas de maquillaje</p>
+          </div>
         </div>
       </div>
-    </div>
-  </aside>
+    </aside>
 
 
-  <div class="my-order" id="my-order">
-        <div class="my-order-container">
+    <div class="my-order" id="my-order">
+      <div class="my-order-container">
 
-            <div class="cabecera">
-                <a href="Misordenes.html">
-                    <img src="icons/flechita.svg" alt="arrow">
-                </a>
+        <div class="cabecera">
+          <a href="Misordenes.html">
+            <img src="icons/flechita.svg" alt="arrow">
+          </a>
 
-                <h1 class="title">
-                    My Orders
-                </h1>  
-            </div>
-           
-            <div class="my-order-content">
-                <div class="order">
-                    <p>
-                        <span>03.25.21</span>
-                        <span>6 articles</span>
-                    </p>
-                    <p>$560.00</p>
-                </div>
-                
-
-            </div>
-
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="Bicicleta">
-                </figure>
-                <p>Bicileta</p>
-                <p>$150.000</p>
-
-            </div>
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="Bicicleta">
-                </figure>
-                <p>Bicileta</p>
-                <p>$150.000</p>
-
-            </div>
-
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="Bicicleta">
-                </figure>
-                <p>Bicileta</p>
-                <p>$150.000</p>
-
-            </div>
-
-            <div class="shopping-cart">
-                <figure>
-                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="Bicicleta">
-                </figure>
-                <p>Bicileta</p>
-                <p>$150.000</p>
-
-            </div>
+          <h1 class="title">
+            My Orders
+          </h1>
         </div>
 
+        <div class="my-order-content">
+          <div class="order">
+            <p>
+              <span>03.25.21</span>
+              <span>6 articles</span>
+            </p>
+            <p>$560.00</p>
+          </div>
+
+
+        </div>
+        <div class="list-shopping" id="list-shopping"></div>
+        
+      </div>
+
     </div>
 
- 
-</div>
+
+  </div>
 
   <script>
     /* === Estado & referencias === */
     const cart = JSON.parse(localStorage.getItem('carrito')) || [];
-    const cartContent   = document.getElementById('cart-content');
+    const cartContent = document.getElementById('cart-content');
     const graciasCompra = document.getElementById('gracias-compra');
-    const btnWhatsapp   = document.getElementById('btn-whatsapp');
-    const myOrder = document.getElementById('my-order')
+    const btnWhatsapp = document.getElementById('btn-whatsapp');
+    const myOrder = document.getElementById('my-order');
+    const listShopping = document.getElementById('list-shopping');
+
 
     /* === Render principal === */
-    function renderCart(){
+    function renderCart() {
       cartContent.innerHTML = '';
 
-      if(cart.length === 0){
+      if (cart.length === 0) {
         /* Carrito vacío */
         myOrder.style.display = 'none';
-        graciasCompra.style.display  = 'none';
-        btnWhatsapp.style.display    = 'none';
+        graciasCompra.style.display = 'none';
+        btnWhatsapp.style.display = 'none';
 
         cartContent.innerHTML = `
           <div style="text-align:center;opacity:.6;margin-top:2rem;">
@@ -143,17 +110,17 @@
       }
 
       /* Carrito con productos */
-      graciasCompra.style.display  = 'block';
-      btnWhatsapp.style.display    = 'flex';
+      graciasCompra.style.display = 'block';
+      btnWhatsapp.style.display = 'flex';
 
       let total = 0;
 
-      cart.forEach((item,index)=>{
+      cart.forEach((item, index) => {
         const div = document.createElement('div');
         div.classList.add('shopping-cart');
         div.innerHTML = `
           <figure>
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="producto">
+            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="${item.nombre}">
           </figure>
           <p>${item.nombre} × ${item.cantidad}</p>
           <p><strong>$${item.precio.toLocaleString()}</strong></p>
@@ -161,7 +128,17 @@
         cartContent.appendChild(div);
         total += item.precio * item.cantidad;
 
-        
+        const div2 = document.createElement('div');
+        div2.classList.add('shopping-cart');
+        div2.innerHTML = `
+          <figure>
+            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="${item.nombre}">
+          </figure>
+          <p>${item.nombre} × ${item.cantidad}</p>
+          <p><strong>$${item.precio.toLocaleString()}</strong></p>
+        `;
+        listShopping.appendChild(div2);
+
       });
 
       // Total
@@ -171,28 +148,29 @@
       cartContent.appendChild(totalDiv);
 
       // Listeners para eliminar
-      document.querySelectorAll('.btn-remove').forEach(btn=>{
-        btn.addEventListener('click',e=>{
+      document.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', e => {
           const idx = Number(e.target.dataset.index);
-          cart.splice(idx,1);
-          localStorage.setItem('carrito',JSON.stringify(cart));
+          cart.splice(idx, 1);
+          localStorage.setItem('carrito', JSON.stringify(cart));
           renderCart();
         });
       });
     }
 
     /* === WhatsApp === */
-    btnWhatsapp.addEventListener('click',e=>{
+    btnWhatsapp.addEventListener('click', e => {
       e.preventDefault();
       const numero = '573154380079'; // Cambia por tu núm real
-      const productos = cart.map(i=>`${i.nombre} × ${i.cantidad}`).join(', ');
-      const total = cart.reduce((acc,i)=>acc+i.precio*i.cantidad,0);
+      const productos = cart.map(i => `${i.nombre} × ${i.cantidad}`).join(', ');
+      const total = cart.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
       const msg = encodeURIComponent(`Hola, quiero comprar: ${productos}. Total: $${total.toLocaleString()}`);
-      window.open(`https://wa.me/${numero}?text=${msg}`,'_blank');
+      window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
     });
 
     /* === Init === */
     renderCart();
   </script>
 </body>
+
 </html>
