@@ -8,31 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  
-  <!-- Ajustes rápidos para centrar y mejorar aspecto -->
-  <style>
-    body{
-      font-family:"Quicksand",sans-serif;
-      display:flex;
-      justify-content:center;
-      padding:2rem 1rem;
-      background:#fff;
-      min-height:100vh;
-    }
-    .product-detail{
-      width:100%;
-      max-width:420px;
-    }
-    .gracias{margin:1rem 0;text-align:center;color:#333;font-size:1.05rem;}
-    .bienvenida{display:none;}
-    /* Ocultar botón WhatsApp por defecto (lo mostraremos por JS) */
-    #btn-whatsapp{display:none;}
-  </style>
+
+
 </head>
 <body>
+  <div class="contenedor-carrito">
   <aside class="product-detail">
     <div class="title-container">
-      <a href="order.html"><img src="./icons/flechita.svg" alt="Volver"></a>
+      <a href="index.html"><img src="./icons/flechita.svg" alt="Volver"></a>
       <p class="title">Mi pedido</p>
     </div>
 
@@ -62,12 +45,84 @@
     </div>
   </aside>
 
+
+  <div class="my-order" id="my-order">
+        <div class="my-order-container">
+
+            <div class="cabecera">
+                <a href="Misordenes.html">
+                    <img src="icons/flechita.svg" alt="arrow">
+                </a>
+
+                <h1 class="title">
+                    My Orders
+                </h1>  
+            </div>
+           
+            <div class="my-order-content">
+                <div class="order">
+                    <p>
+                        <span>03.25.21</span>
+                        <span>6 articles</span>
+                    </p>
+                    <p>$560.00</p>
+                </div>
+                
+
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Bicicleta">
+                </figure>
+                <p>Bicileta</p>
+                <p>$150.000</p>
+
+            </div>
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Bicicleta">
+                </figure>
+                <p>Bicileta</p>
+                <p>$150.000</p>
+
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Bicicleta">
+                </figure>
+                <p>Bicileta</p>
+                <p>$150.000</p>
+
+            </div>
+
+            <div class="shopping-cart">
+                <figure>
+                    <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Bicicleta">
+                </figure>
+                <p>Bicileta</p>
+                <p>$150.000</p>
+
+            </div>
+        </div>
+
+    </div>
+
+ 
+</div>
+
   <script>
     /* === Estado & referencias === */
     const cart = JSON.parse(localStorage.getItem('carrito')) || [];
     const cartContent   = document.getElementById('cart-content');
     const graciasCompra = document.getElementById('gracias-compra');
     const btnWhatsapp   = document.getElementById('btn-whatsapp');
+    const myOrder = document.getElementById('my-order')
 
     /* === Render principal === */
     function renderCart(){
@@ -75,6 +130,7 @@
 
       if(cart.length === 0){
         /* Carrito vacío */
+        myOrder.style.display = 'none';
         graciasCompra.style.display  = 'none';
         btnWhatsapp.style.display    = 'none';
 
@@ -88,7 +144,7 @@
 
       /* Carrito con productos */
       graciasCompra.style.display  = 'block';
-      btnWhatsapp.style.display    = 'inline-block';
+      btnWhatsapp.style.display    = 'flex';
 
       let total = 0;
 
@@ -104,6 +160,8 @@
           <img src="./icons/icon_close.png" alt="Eliminar" data-index="${index}" class="btn-remove">`;
         cartContent.appendChild(div);
         total += item.precio * item.cantidad;
+
+        
       });
 
       // Total
@@ -126,7 +184,7 @@
     /* === WhatsApp === */
     btnWhatsapp.addEventListener('click',e=>{
       e.preventDefault();
-      const numero = '573001234567'; // Cambia por tu núm real
+      const numero = '573154380079'; // Cambia por tu núm real
       const productos = cart.map(i=>`${i.nombre} × ${i.cantidad}`).join(', ');
       const total = cart.reduce((acc,i)=>acc+i.precio*i.cantidad,0);
       const msg = encodeURIComponent(`Hola, quiero comprar: ${productos}. Total: $${total.toLocaleString()}`);
