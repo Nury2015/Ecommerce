@@ -137,7 +137,7 @@
       <!-- Sugerencias -->
       <div class="sugerencias">
         <h3>Te puede interesar</h3>
-        <div class="mini-cards">
+        <div class="mini-cards" id="mini-cards">
           <div>
             <img src="img/producto1.jpg" alt="producto sugerido">
             <p>Pulsera natural</p>
@@ -171,10 +171,8 @@
       { nombre: "Gafas de sol", imagen: "img/producto4.jpg" }
     ];
 
-    const sugerencias = document.querySelector(".sugerencias");
-    const miniCards = document.querySelector(".mini-cards");
-
-
+    const sugerencias = document.querySelectorById("sugerencias");
+    const miniCards = document.querySelectorById("mini-cards");
 
     /* === Render principal === */
     function renderCart() {
@@ -262,7 +260,6 @@
         });
       });
     }
-
 
     /* === WhatsApp === */
     btnWhatsapp.addEventListener('click', e => {
