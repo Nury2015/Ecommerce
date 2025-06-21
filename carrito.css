@@ -117,7 +117,22 @@ nav>a{
     color: var(--very-light-pink);
 }
 
+.cabecera a{
+  text-decoration: none;
+    font-size: var(--md);
+    color: var(--very-light-pink);
+}
+.my-order-container{
+  padding: 20px;
+  width: 51rem;
+  height: auto;
+}
+.gracias{
+  display: flex;
+  justify-content:center ;
+  margin-bottom: 20px;
 
+}
 .contenedor-carrito{
   width: 100%;
   display: flex;
@@ -131,9 +146,11 @@ nav>a{
 }
 
 .sugerencias {
+  display: none;
   margin-top: 2rem;
-  text-align: center;
 }
+
+
 
 .mini-cards {
   display: flex;
@@ -284,10 +301,28 @@ nav>a{
 
 
 @media (max-width: 640px) {
+
+  .menu{
+        display: block; }
+
+        .navbar-left ul{
+            display: none;
+        }
+        .navbar-email{
+            display: none;
+
+        }
+
+    
   .product-detail {
     width: 100%;
   }
 
-
-
+.my-order-container{
+  width: 21rem;
+}
+.contenedor-carrito{
+  
+  flex-direction: column;
+}
 }

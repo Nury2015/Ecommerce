@@ -73,7 +73,7 @@
 
           <a href="carrito.html">
             <img src="icons/icon_shopping_cart.svg" alt="shopping cart">
-            <div>2</div>
+            <div>0</div>
           </a>
 
 
@@ -85,7 +85,7 @@
 
     </div>
   </nav>
-  
+
   <div class="contenedor-carrito">
 
 
@@ -95,11 +95,11 @@
 
         <div class="cabecera">
           <a href="Misordenes.html">
-            <img src="icons/flechita.svg" alt="arrow">
+            <p>Tus pedidos</p>
           </a>
 
           <h1 class="title">
-            My Orders
+            Total de artículos
           </h1>
         </div>
 
@@ -121,7 +121,7 @@
     <aside class="product-detail">
       <div class="title-container">
         <a href="index.html"><img src="./icons/flechita.svg" alt="Volver"></a>
-        <p class="title">Mi pedido</p>
+        <p class="title">Resumen del pedido</p>
       </div>
 
       <p id="gracias-compra" class="gracias">¡Gracias por tu compra 💖!</p>
@@ -164,6 +164,16 @@
     const myOrder = document.getElementById('my-order');
     const listShopping = document.getElementById('list-shopping');
     const resumen = document.getElementById('resumen-pedido');
+    const productosDisponibles = [
+      { nombre: "Pulsera de piedras", imagen: "img/producto1.jpg" },
+      { nombre: "Set 10 brochas", imagen: "img/producto2.jpg" },
+      { nombre: "Aretes minimalistas", imagen: "img/producto3.jpg" },
+      { nombre: "Gafas de sol", imagen: "img/producto4.jpg" }
+    ];
+
+    const sugerencias = document.querySelector(".sugerencias");
+    const miniCards = document.querySelector(".mini-cards");
+
 
 
     /* === Render principal === */
@@ -181,11 +191,12 @@
             <img src="img/carritoVacio.png" alt="Carrito vacío" style="max-width:100px;">
             <p>Tu carrito está vacío</p>
           </div>`;
+           mostrarSugerencias(); // Mostrar sugerencias solo cuando está vacío
         return;
       }
-
+   sugerencias.style.display = 'none';
       /* Carrito con productos */
-      graciasCompra.style.display = 'block';
+
       btnWhatsapp.style.display = 'flex';
 
       let total = 0;
@@ -262,7 +273,22 @@
       const msg = encodeURIComponent(`Hola, quiero comprar: ${productos}. Total: $${total.toLocaleString()}`);
       window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
     });
+   
+    function mostrarSugerencias() {
+      miniCards.innerHTML = ''; // Limpia anteriores
+      const sugeridos = productosDisponibles.slice(0, 2); // Muestra los primeros 2
 
+      sugeridos.forEach(p => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+        <img src="${p.imagen}" alt="${p.nombre}">
+        <p>${p.nombre}</p>
+      `;
+        miniCards.appendChild(div);
+      });
+
+      sugerencias.style.display = 'block';
+    }
     /* === Init === */
     renderCart();
   </script>
