@@ -17,14 +17,14 @@
 
             <img src="icons/icon_menu.svg" alt="menu" class="menu">
         </a>
-        
+
 
         <div class="navbar-left">
             <a href="index.html">
 
                 <img src="logos/logo_yard_sale.svg" alt="logo" class="logo">
             </a>
-           
+
             <ul>
                 <li>
                     <a href="index.html">All</a>
@@ -481,43 +481,77 @@
     </section>
 
     <footer>
-         © <span id="year"></span> DECAYBA · Hecho con ❤ 
+        © <span id="year"></span> DECAYBA · Hecho con ❤
     </footer>
 
     <script>
-  // Simulación de carrito
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        // Simulación de carrito
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  function actualizarCarritoVisual() {
-    const cartCountDiv = document.querySelector('.navbar-shopping-cart div');
-    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-    cartCountDiv.textContent = totalItems;
-  }
+        function actualizarCarritoVisual() {
+            const cartCountDiv = document.querySelector('.navbar-shopping-cart div');
+            const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            cartCountDiv.textContent = totalItems;
+        }
 
-  function agregarAlCarrito(nombre, precio) {
-    const productoExistente = carrito.find(item => item.nombre === nombre);
-    if (productoExistente) {
-      productoExistente.cantidad += 1;
-    } else {
-      carrito.push({ nombre, precio, cantidad: 1 });
-    }
+        function agregarAlCarrito(nombre, precio) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    actualizarCarritoVisual();
-  }
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarCarritoVisual();
+        }
 
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.querySelector('figure a').addEventListener('click', e => {
-      e.preventDefault(); // Evita que redirija
-      const nombre = card.querySelector('.informacion-producto p:nth-child(2)').textContent;
-      const precioTexto = card.querySelector('.informacion-producto p:nth-child(1)').textContent;
-      const precio = Number(precioTexto.replace(/[^0-9]/g, '')); // $120.000 → 120000
-      agregarAlCarrito(nombre, precio);
-    });
-  });
+        function volarAlCarrito(imgOrigen) {
+            const carritoIcono = document.querySelector('.navbar-shopping-cart img');
+            const imgRect = imgOrigen.getBoundingClientRect();
+            const carritoRect = carritoIcono.getBoundingClientRect();
 
-  actualizarCarritoVisual();
-</script>
+            const imgClone = imgOrigen.cloneNode(true);
+            imgClone.classList.add('fly-img');
+            document.body.appendChild(imgClone);
+
+            // Posición inicial (donde está la imagen original)
+            imgClone.style.top = imgRect.top + 'px';
+            imgClone.style.left = imgRect.left + 'px';
+
+            // Forzamos reflow para que el navegador note la posición inicial
+            imgClone.offsetWidth;
+
+            // Posición final (el carrito)
+            const translateX = carritoRect.left - imgRect.left;
+            const translateY = carritoRect.top - imgRect.top;
+
+            imgClone.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            imgClone.style.opacity = 0;
+
+            // Eliminar después de la animación
+            setTimeout(() => {
+                imgClone.remove();
+            }, 700);
+        }
+
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.querySelector('figure a').addEventListener('click', e => {
+                e.preventDefault(); // Evita que redirija
+                const nombre = card.querySelector('.informacion-producto p:nth-child(2)').textContent;
+                const precioTexto = card.querySelector('.informacion-producto p:nth-child(1)').textContent;
+                const precio = Number(precioTexto.replace(/[^0-9]/g, '')); // $120.000 → 120000
+
+                const imgElement = card.querySelector("img"); // Usamos la imagen del producto
+                volarAlCarrito(imgElement); // 🎯 ¡Aquí ocurre la magia!
+
+                agregarAlCarrito(nombre, precio);
+            });
+        });
+
+        actualizarCarritoVisual();
+    </script>
 
 </body>
 
