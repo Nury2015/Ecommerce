@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Decayba ‑ Carrito</title>
-  <link rel="stylesheet" href="carrito.css"><!-- tu hoja externa sigue funcionando -->
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="carrito.css"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -16,75 +17,64 @@
 <body>
 
   <nav>
-    <a href="menumobile.html">
-
-      <img src="icons/icon_menu.svg" alt="menu" class="menu">
-    </a>
-
-
-    <div class="navbar-left">
-      <a href="index.html">
-
-        <img src="logos/logo_yard_sale.svg" alt="logo" class="logo">
-      </a>
-
-      <ul>
-        <li>
-          <a href="index.html">All</a>
-        </li>
-
-        <li>
-          <a href="index.html">Clothes</a>
-        </li>
-
-        <li>
-          <a href="index.html">Electronics</a>
-        </li>
-
-        <li>
-          <a href="index.html">Furnitures</a>
-        </li>
-
-        <li>
-          <a href="index.html">Toys</a>
-        </li>
-
-        <li>
-          <a href="index.html">Others</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="navbar-right">
-      <ul>
-
-        <li class="navbar-email">
-          <a href="editar-cuenta.html">
-
-            camila@gmail.com
-
-          </a>
-
-        </li>
-
-
-
-        <li class="navbar-shopping-cart">
-
-          <a href="carrito.html">
-            <img src="icons/icon_shopping_cart.svg" alt="shopping cart">
-            <div>0</div>
-          </a>
-
-
-
-        </li>
-
-      </ul>
-
-
-    </div>
-  </nav>
+        <a href="menumobile.html">
+    
+            <img src="icons/icon_menu.svg" alt="menu" class="menu">
+        </a>
+    
+    
+        <div class="navbar-left">
+            <a href="index.html">
+                <img src="logos/logo_yard_sale.svg" alt="logo" class="logo">
+            </a>
+    
+            <ul>
+                <li>
+                    <a href="Misordenes.html">
+                        Tus pedidos
+                    </a>
+                </li>
+    
+                <li>
+                    <a href="index.html">Clothes</a>
+                </li>
+    
+                <li>
+                    <a href="index.html">Electronics</a>
+                </li>
+    
+                <li>
+                    <a href="index.html">Furnitures</a>
+                </li>
+    
+                <li>
+                    <a href="index.html">Toys</a>
+                </li>
+    
+                <li>
+                    <a href="index.html">Others</a>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="navbar-right">
+            <ul>
+    
+                <li class="navbar-email">
+                    <a href="editar-cuenta.html">
+                        camila@gmail.com
+                    </a>
+                </li>
+    
+                <li class="navbar-shopping-cart">
+                    <a id="ver-carrito">
+                        <img src="icons/icon_shopping_cart.svg" alt="shopping cart">
+                        <div>0</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
   <div class="contenedor-carrito">
 
@@ -94,10 +84,7 @@
       <div class="my-order-container">
 
         <div class="cabecera">
-          <a href="Misordenes.html">
-            <p>Tus pedidos</p>
-          </a>
-
+         
           <h1 class="title">
             Total de artículos
           </h1>
@@ -136,6 +123,7 @@
 
       <!-- Sugerencias -->
       <div class="sugerencias">
+        <div class="card-sugerencias">
         <h3>Te puede interesar</h3>
         <div class="mini-cards">
           <div>
@@ -147,7 +135,7 @@
             <p>Brochas de maquillaje</p>
           </div>
         </div>
-
+        </div>
       </div>
     </aside>
 
@@ -183,7 +171,7 @@
         btnWhatsapp.style.display = 'none';
 
         cartContent.innerHTML = `
-          <div style="text-align:center;opacity:.6;margin-top:2rem;">
+          <div style="text-align:center;margin-top:2rem;">
             <img src="img/carritoVacio.png" alt="Carrito vacío" style="max-width:100px;">
             <p>Tu carrito está vacío</p>
           </div>`;
@@ -191,6 +179,7 @@
         return;
       }
    sugerencias.style.display = 'none';
+
       /* Carrito con productos */
 
       btnWhatsapp.style.display = 'flex';
@@ -272,19 +261,63 @@
    
     function mostrarSugerencias() {
       miniCards.innerHTML = ''; // Limpia anteriores
-      const sugeridos = productosDisponibles.slice(0, 5); // Muestra los primeros 2
+      const sugeridos = productosDisponibles.slice(0, 20); // Muestra los primeros 2
 
       sugeridos.forEach(p => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <img src="${p.img}" alt="${p.nombre}">
-        <p>${p.nombre}</p>
+        <a href="detalleprod.html">
+                    <img src="${p.img}" alt="${p.nombre}">
+                </a>
+                <div class="informacion-producto">
+                    <div>
+                        <p>${p.nombre}</p>
+                        <p>${p.precio}</p>
+                    </div>
+                    <figure>
+                        <a href="carrito.html">
+                            <img src="icons/bt_add_to_cart.svg" alt="carrito de compra">
+                        </a>
+                    </figure>
+                </div>
       `;
         miniCards.appendChild(div);
       });
 
       sugerencias.style.display = 'block';
     }
+
+    function actualizarCarritoVisual() {
+            const cartCountDiv = document.querySelector('.navbar-shopping-cart div');
+            const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            cartCountDiv.textContent = totalItems;
+        }
+
+    function agregarAlCarrito(nombre, precio, img) {
+            console.log(nombre, precio, img)
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1, img });
+            }
+
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarCarritoVisual();
+        }
+
+        function agregarAlCarrito(nombre, precio, img) {
+            console.log(nombre, precio, img)
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1, img });
+            }
+
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            actualizarCarritoVisual();
+        }
     /* === Init === */
     renderCart();
   </script>

@@ -17,127 +17,30 @@ body {
   justify-content: center;
   flex-direction: column;
   background: #fff;
-  min-height: 100vh;
+  min-height: 82vh;
+  margin-top: 10px;
 }
 
-    
-nav {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--very-light-pink);
-    margin-bottom: 12px;
-
-}
-
-nav>a{
-    display: none;
-}
-
-
-.menu {
-    display: none;
-}
-
-.logo {
-    width: 100px;
-    margin-bottom: 16px;
-}
-
-.navbar-right .navbar-email {
-    color: var(--very-light-pink);
-    font-size: var(--sm);
-    right: 12px;
-}
-
-.navbar-left  {
-    display: flex;
-    margin-left: 12px;
-}
-
-
-.navbar-left a{
-    display: flex;
-    margin-left: 12px;
-}
-
-
-.navbar-left ul {
-    margin-left: 12px;
-}
-
-.navbar-left ul,
-.navbar-right ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    height: 60px;
-}
-
-.navbar-left ul li a,
-.navbar-right ul li {
-    text-decoration: none;
-    color: var(--very-light-pink);
-    border: 1px solid var(--white);
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.navbar-left ul li a:hover,
-.navbar-right ul li:hover {
-
-    border: 1px solid var(--hospital-green);
-    color: var(--hospital-green);
-}
-
-.navbar-shopping-cart {
-    position: relative;
-}
-
-.navbar-shopping-cart div {
-    position: absolute;
-    color: var(--black);
-    width: 14px;
-    height: 14px;
-    background-color: var(--hospital-green);
-    border-radius: 50px;
-    font-size: var(--sm);
-    font-weight: bold;
-    top: 4px;
-    right: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar-email a{
-    text-decoration: none;
-    font-size: var(--sm);
-    color: var(--very-light-pink);
-}
-
-.cabecera a{
-  text-decoration: none;
-    font-size: var(--md);
-    color: var(--very-light-pink);
-}
-.my-order-container{
-  padding: 20px;
-  width: 51rem;
+.my-order-container {
+  padding: 20px 60px;
+  width: 50rem;
   height: auto;
 }
-.gracias{
+
+.gracias {
   display: flex;
-  justify-content:center ;
+  justify-content: center;
   margin-bottom: 20px;
 
 }
-.contenedor-carrito{
+
+.contenedor-carrito {
   width: 100%;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
+  padding-top: 20px;
 }
+
 .bienvenida {
   text-align: center;
   font-size: 1.1rem;
@@ -150,13 +53,22 @@ nav>a{
   margin-top: 2rem;
 }
 
+.card-sugerencias img {
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
+}
+
+.sugerencias h3 {}
 
 
 .mini-cards {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    gap: 50px;
+    place-content: center;
+    padding-top: 108px;
+    object-fit: cover;
 }
 
 .mini-cards div {
@@ -164,7 +76,8 @@ nav>a{
 }
 
 .mini-cards img {
-  width: 100%;
+  width: 250px;
+  height: 250px;
   border-radius: 8px;
 }
 
@@ -190,11 +103,12 @@ nav>a{
 }
 
 .product-detail {
-  width: 360px;
-  padding: 24px;
+  width: 100%;
+  padding: 24px 54px;
   box-sizing: border-box;
-  max-width: 420px;
+
 }
+
 
 .title-container {
   display: flex;
@@ -216,7 +130,7 @@ nav>a{
   gap: 16px;
   align-items: center;
   background-color: var(--text-input-field);
-  margin-bottom: 24px;
+  margin-bottom: 50px;
   border-radius: 8px;
   padding: 0 24px;
 }
@@ -264,11 +178,12 @@ nav>a{
   font-weight: bold;
 }
 
-.my-order-content{
+.my-order-content {
   display: flex;
   flex-direction: column;
 
 }
+
 .my-order-content .boton {
   display: flex;
   align-items: center;
@@ -282,7 +197,7 @@ nav>a{
 }
 
 .boton {
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
@@ -302,27 +217,16 @@ nav>a{
 
 @media (max-width: 640px) {
 
-  .menu{
-        display: block; }
-
-        .navbar-left ul{
-            display: none;
-        }
-        .navbar-email{
-            display: none;
-
-        }
-
-    
   .product-detail {
     width: 100%;
   }
 
-.my-order-container{
-  width: 21rem;
-}
-.contenedor-carrito{
-  
-  flex-direction: column;
-}
+  .my-order-container {
+    width: 21rem;
+  }
+
+  .contenedor-carrito {
+
+    flex-direction: column;
+  }
 }
