@@ -164,12 +164,8 @@
     const myOrder = document.getElementById('my-order');
     const listShopping = document.getElementById('list-shopping');
     const resumen = document.getElementById('resumen-pedido');
-    const productosDisponibles = [
-      { nombre: "Pulsera de piedras", imagen: "img/producto1.jpg" },
-      { nombre: "Set 10 brochas", imagen: "img/producto2.jpg" },
-      { nombre: "Aretes minimalistas", imagen: "img/producto3.jpg" },
-      { nombre: "Gafas de sol", imagen: "img/producto4.jpg" }
-    ];
+    const productosDisponibles = JSON.parse(localStorage.getItem('productosDisponibles')) || [];
+    console.log(productosDisponibles)
 
     const sugerencias = document.querySelector(".sugerencias");
     const miniCards = document.querySelector(".mini-cards");
@@ -206,7 +202,7 @@
         div.classList.add('shopping-cart');
         div.innerHTML = `
           <figure>
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="${item.nombre}">
+            <img src="${item.img}" alt="${item.nombre}">
           </figure>
           <p>${item.nombre} × ${item.cantidad}</p>
           <p><strong>$${item.precio.toLocaleString()}</strong></p>
@@ -219,7 +215,7 @@
         div2.classList.add('shopping-cart');
         div2.innerHTML = `
           <figure>
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="${item.nombre}">
+        <img src="${item.img}" alt="${item.nombre}">
           </figure>
           <p>${item.nombre} × ${item.cantidad}</p>
           <p><strong>$${item.precio.toLocaleString()}</strong></p>
@@ -276,12 +272,12 @@
    
     function mostrarSugerencias() {
       miniCards.innerHTML = ''; // Limpia anteriores
-      const sugeridos = productosDisponibles.slice(0, 2); // Muestra los primeros 2
+      const sugeridos = productosDisponibles.slice(0, 5); // Muestra los primeros 2
 
       sugeridos.forEach(p => {
         const div = document.createElement('div');
         div.innerHTML = `
-        <img src="${p.imagen}" alt="${p.nombre}">
+        <img src="${p.img}" alt="${p.nombre}">
         <p>${p.nombre}</p>
       `;
         miniCards.appendChild(div);

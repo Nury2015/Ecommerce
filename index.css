@@ -114,6 +114,17 @@ nav>a{
     color: var(--very-light-pink);
 }
 
+/*para que la imagen vuele al carrito*/
+.fly-img {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1000;
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+
 
 
 @media (max-width:640px) {
