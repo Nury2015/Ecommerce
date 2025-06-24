@@ -31,7 +31,7 @@
             <ul>
                 <li>
                     <a href="Misordenes.html">
-                        <p>Tus pedidos</p>
+                       Tus pedidos
                     </a>
                 </li>
 
@@ -79,18 +79,24 @@
     <div class="product-detail">
 
 
-        <aside>
+       <aside class="imagen">
+  <div class="product-detail-close">
+    <a href="index.html">
+      <img src="icons/icon_close.png" alt="Close">
+    </a>
+  </div>
 
-            <div class="product-detail-close">
-                <a href="index.html">
-                    <img src="icons/icon_close.png" alt="Close">
-                </a>
-            </div>
-
-
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="bike">
-        </aside>
+  <div class="carousel">
+    <button class="prev">&#10094;</button>
+    <div class="carousel-images">
+      <img src="img/peluche/perrocon.webp">
+      <img src="img/peluche/peluche.webp" alt="img2">
+      <img src="img/peluche/medidas.webp" alt="img3">
+      <img src="img/peluche/perroabrazando.webp" alt="img3">
+    </div>
+    <button class="next">&#10095;</button>
+  </div>
+</aside>
 
 
         <aside <div class="product-inf">
@@ -111,6 +117,33 @@
     </div>
     </aside>
     </div>
+
+    <script>
+  const carouselImages = document.querySelector('.carousel-images');
+  const images = document.querySelectorAll('.carousel-images img');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  let counter = 0;
+const total = document.querySelectorAll('.carousel-images img').length;
+  nextBtn.addEventListener('click', () => {
+    counter = (counter + 1) % total;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    counter = (counter - 1 + total) % total;
+    updateCarousel();
+  });
+
+  function updateCarousel() {
+    const size = images[0].clientWidth;
+    carouselImages.style.transform = `translateX(${-size * counter}px)`;
+  }
+
+  window.addEventListener('resize', updateCarousel);
+</script>
+
 </body>
 
 </html>

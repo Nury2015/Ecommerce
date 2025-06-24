@@ -69,7 +69,7 @@
             </ul>
         </div>
     </nav>
-
+<!-- <img src="img/peluche/" alt=""> -->
     <section class="main-container">
         <div class="card-container" id="card-container">
         </div>
@@ -85,82 +85,114 @@
             {
                 nombre: "Peluche para perro",
                 valor: "$50.000",
-                imagen: "img/peluche/perrocon.webp"
+                descripcion: "oeoe",
+                imagen: "img/peluche/perrocon.webp",
+                imgs: ["img/peluche/medidas.webp","img/peluche/perroabrazando.webp","img/peluche/perrocon.webp"]
             },
             {
                 nombre: "Botón para perros",
                 valor: "$50.000",
-                imagen: "img/Boton/principal.webp"
+                imagen: "img/Boton/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Cepillo para mascotas",
                 valor: "40.000",
-                imagen: "img/Cepillo para mascotas/principal.webp"
+                imagen: "img/Cepillo para mascotas/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Peluche para mascotas",
                 valor: "$120.000",
-                imagen: "img/ganzo/principal.webp"
+                imagen: "img/ganzo/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Distribuidor de Bolsas",
                 valor: "$30.000",
-                imagen: "img/contenedorbolsa/princi.webp"
+                imagen: "img/contenedorbolsa/princi.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Juguetes de pelota para perros",
                 valor: "$40.000",
-                imagen: "img/Pelotas/Principal.webp"
+                imagen: "img/Pelotas/Principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Entrenador de Baño para Perros",
                 valor: "$50.000",
-                imagen: "img/tepete/principal.webp"
+                imagen: "img/tepete/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Disco Volador De Entrenamiento Para Mascotas",
                 valor: "$30.000",
-                imagen: "img/frisbi/principal.webp"
+                imagen: "img/frisbi/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Bolsa de entrenamiento",
                 valor: "$40.000",
-                imagen: "img/Bolsa/principal.webp"
+                imagen: "img/Bolsa/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Peine para Mascota",
                 valor: "$30.000",
-                imagen: "img/Cepillo/princi.webp"
+                imagen: "img/Cepillo/princi.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Disco Volador",
                 valor: "$40.000",
-                imagen: "img/Disco volador/principal.webp"
+                imagen: "img/Disco volador/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Comedero para perro",
                 valor: "$100.000",
-                imagen: "img/comedero/negro.webp"
+                imagen: "img/comedero/negro.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Juguetes para Masticar con Sonido para Cachorros",
                 valor: "$50.000",
-                imagen: "img/Pelotas/Principal.webp"
+                imagen: "img/Pelotas/Principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Bolsas para Excrementos de Perro",
                 valor: "$40.000",
-                imagen: "img/bolsas/principal.webp"
+                imagen: "img/bolsas/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Bálsamo Hidratante huellas y nariz",
                 valor: "$10.000",
-                imagen: "img/balsamo/principal.webp"
+                imagen: "img/balsamo/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             },
             {
                 nombre: "Cepillo de dientes para mascotas",
                 valor: "$20.000",
-                imagen: "img/cepillodientes/principal.webp"
+                imagen: "img/cepillodientes/principal.webp",
+                descripcion: "oeoe",
+                imgs:["img/peluche/medidas.webp"]
             }
         ];
 
@@ -170,7 +202,12 @@
                 const div = document.createElement('div');
                 div.classList.add('product-card');
                 div.innerHTML = `
-                <a href="detalleprod.html">
+                <a onclick="verDetalleProducto({
+  nombre: '${item.nombre}',
+  precio: '${item.valor}',
+  descripcion: '${item.descripcion}',
+  imagen: '${item.imagen}',
+  imagenes: '${item.imgs}'})" >
                     <img src="${item.imagen}" alt="${item.nombre}">
                 </a>
                 <div class="informacion-producto">
@@ -185,10 +222,16 @@
                     </figure>
                 </div>
             `;
-                console.log(div)
             cartContent.appendChild(div);
             })
         }
+
+        function verDetalleProducto(producto) {
+            const imgs = producto.imagenes.split(",")
+            producto.imagenes = imgs
+            localStorage.setItem('productoSeleccionado', JSON.stringify(producto));
+            window.location.href = 'detalleprod.html';
+}
 
         renderCart()
 
@@ -219,7 +262,6 @@
         document.getElementById("ver-carrito").addEventListener("click", function (e) {
             e.preventDefault(); // Detiene el comportamiento por defecto del enlace
             const productos = obtenerListaDeProductos();
-            console.log(productos);
             localStorage.setItem('productosDisponibles', JSON.stringify(productos));
             window.location.href = "carrito.html"; // Navega manualmente
         });
@@ -233,7 +275,6 @@
         }
 
         function agregarAlCarrito(nombre, precio, img) {
-            console.log(nombre, precio, img)
             const productoExistente = carrito.find(item => item.nombre === nombre);
             if (productoExistente) {
                 productoExistente.cantidad += 1;
