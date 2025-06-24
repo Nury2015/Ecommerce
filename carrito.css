@@ -22,7 +22,7 @@ body {
 }
 
 .my-order-container {
-  padding: 20px 60px;
+  padding: 60px 60px;
   width: 50rem;
   height: auto;
 }
@@ -67,13 +67,11 @@ body {
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 50px;
     place-content: center;
-    padding-top: 108px;
+    padding-top: 20px;
     object-fit: cover;
 }
 
-.mini-cards div {
-  width: 100px;
-}
+
 
 .mini-cards img {
   width: 250px;
@@ -104,7 +102,7 @@ body {
 
 .product-detail {
   width: 100%;
-  padding: 24px 54px;
+  padding: 60px 54px;
   box-sizing: border-box;
 
 }
