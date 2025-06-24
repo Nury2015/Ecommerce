@@ -59,19 +59,10 @@ body {
   object-fit: cover;
 }
 
-.sugerencias h3 {}
-
-
-.mini-cards {
-  display: grid;
-    grid-template-columns: repeat(auto-fill, 240px);
-    gap: 50px;
-    place-content: center;
-    padding-top: 20px;
-    object-fit: cover;
+.sugerencias h3 {
+  display: flex;
+  justify-content: center;
 }
-
-
 
 .mini-cards img {
   width: 250px;
@@ -102,7 +93,6 @@ body {
 
 .product-detail {
   width: 100%;
-  padding: 60px 54px;
   box-sizing: border-box;
 
 }
@@ -215,16 +205,26 @@ body {
 
 @media (max-width: 640px) {
 
-  .product-detail {
-    width: 100%;
-  }
-
   .my-order-container {
-    width: 21rem;
+    width: 17rem;
   }
 
   .contenedor-carrito {
-
     flex-direction: column;
   }
-}
+  
+
+  .mini-cards{
+    grid-template-columns: repeat(auto-fill, 140px);
+    }
+
+    
+    .mini-cards img {
+        width: 100%;
+        height: 140px;
+
+    }
+  }
+
+
+    
