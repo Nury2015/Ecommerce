@@ -31,7 +31,7 @@
             <ul>
                 <li>
                     <a href="Misordenes.html">
-                       Tus pedidos
+                        Tus pedidos
                     </a>
                 </li>
 
@@ -76,73 +76,76 @@
         </div>
     </nav>
 
-    <div class="product-detail">
+    <div class="product-detail" id="product-detail">
+        <aside class="imagen">
+            <div class="product-detail-close">
+                <a href="index.html">
+                    <img src="icons/icon_close.png" alt="Close">
+                </a>
+            </div>
 
+            <div class="carousel">
+                <button class="prev">&#10094;</button>
+                <div class="carousel-images" id="carousel">
+                </div>
+                <button class="next">&#10095;</button>
+            </div>
+        </aside>
 
-       <aside class="imagen">
-  <div class="product-detail-close">
-    <a href="index.html">
-      <img src="icons/icon_close.png" alt="Close">
-    </a>
-  </div>
-
-  <div class="carousel">
-    <button class="prev">&#10094;</button>
-    <div class="carousel-images">
-      <img src="img/peluche/perrocon.webp">
-      <img src="img/peluche/peluche.webp" alt="img2">
-      <img src="img/peluche/medidas.webp" alt="img3">
-      <img src="img/peluche/perroabrazando.webp" alt="img3">
-    </div>
-    <button class="next">&#10095;</button>
-  </div>
-</aside>
-
-
-        <aside <div class="product-inf">
-            <p>Bicicleta</p>
-            <p>$50000</p>
-            <p>Esta bicicleta de montaña está diseñada para aventuras en senderos exigentes y desafiantes. Equipada con
-                un
-                cuadro de aluminio ligero pero resistente, esta bicicleta ofrece durabilidad y agilidad sin compromisos.
-            </p>
-
-
-            <button class="primary-button add-to-cart-button " onclick="window.location.href='carrito.html'">
-
-                <img src="icons/bt_add_to_cart.svg" alt="add to card">
-                Add to cart
-
-            </button>
-    </div>
-    </aside>
     </div>
 
     <script>
-  const carouselImages = document.querySelector('.carousel-images');
-  const images = document.querySelectorAll('.carousel-images img');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
+        const carouselImages = document.querySelector('.carousel-images');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        const item = JSON.parse(localStorage.getItem('productoSeleccionado')) || [];
+        const productDetail = document.getElementById('product-detail');
+        const carrousel = document.getElementById('carousel');
+    
+        item.imagenes.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = "imagen del carrusel";
+            carrousel.appendChild(img);
+        });
 
-  let counter = 0;
-const total = document.querySelectorAll('.carousel-images img').length;
-  nextBtn.addEventListener('click', () => {
-    counter = (counter + 1) % total;
-    updateCarousel();
-  });
+        const images = document.querySelectorAll('.carousel-images img');
 
-  prevBtn.addEventListener('click', () => {
-    counter = (counter - 1 + total) % total;
-    updateCarousel();
-  });
+        const div = document.createElement('aside');
+        div.classList.add('product-inf');
+        div.innerHTML = `
+          <p>${item.nombre}</p>
+            <p>${item.precio}</p>
+            <p>${item.descripcion}
+            </p>
 
-  function updateCarousel() {
-    const size = images[0].clientWidth;
-    carouselImages.style.transform = `translateX(${-size * counter}px)`;
-  }
+            <button class="primary-button add-to-cart-button " onclick="window.location.href='carrito.html'">
+                <img src="icons/bt_add_to_cart.svg" alt="add to card">
+                Add to cart
+            </button>
+          `;
+        productDetail.appendChild(div);
 
-  window.addEventListener('resize', updateCarousel);
-</script>
+        
+        let counter = 0;
+        const total = document.querySelectorAll('.carousel-images img').length;
+        nextBtn.addEventListener('click', () => {
+            counter = (counter + 1) % total;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            counter = (counter - 1 + total) % total;
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            const size = images[0].clientWidth;
+            carouselImages.style.transform = `translateX(${-size * counter}px)`;
+        }
+
+        window.addEventListener('resize', updateCarousel);
+    </script>
 
 </body>
 
