@@ -136,15 +136,17 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+ 
+/* para celular */
 @media (max-width:640px) {
 
   .carousel {
-    /* overflow: hidden; */
+    overflow: hidden;
     margin-left: 0px;
     
   }
   .carousel-images {
+    display: flex;
      overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -155,8 +157,8 @@ body {
   flex: 0 0 auto;
   scroll-snap-align: start;
   /* ancho de cada item */
-  width: 80%; /* o el tamaño que quieras */
-  margin-right: 10px;
+  width: 100%; /* o el tamaño que quieras */
+
 }
   .carousel-images img {
     flex-shrink: 0;
