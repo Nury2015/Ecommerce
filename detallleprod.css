@@ -115,7 +115,7 @@ body {
   color: var(--very-light-pink);
   font-size: var(--md);
   margin-top: 0;
-  margin-bottom: 120px;
+  margin-bottom: 20px;
   text-align: justify;
 }
 
@@ -140,22 +140,29 @@ body {
 @media (max-width:640px) {
 
   .carousel {
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-left: 0px;
+    
   }
-
   .carousel-images {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-
-  }
-
+   scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;}
+    
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  /* ancho de cada item */
+  width: 80%; /* o el tamaño que quieras */
+  margin-right: 10px;
+}
   .carousel-images img {
     flex-shrink: 0;
-    width: 100vw;
+    width: 100%;
     height: auto;
-    scroll-snap-align: center;
   }
 
   .product-inf {
@@ -169,4 +176,7 @@ body {
     display: none;
     /* Ocultamos flechas en móvil */
   }
+
+ 
+  
 }
