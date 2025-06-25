@@ -21,10 +21,11 @@ body {
   position: relative;
   width: 100%;
   max-width: 600px;
+  margin-top: 30px;
   margin-left: 40px;
   overflow: hidden;
   border-radius: 8px;
-  height: 400px;
+  height: 500px;
 }
 
 
@@ -38,7 +39,8 @@ body {
 .carousel-images img {
   object-fit: contain;
   width: 601px;
-  height: 401px;
+  height: 507px;
+
 }
 
 
