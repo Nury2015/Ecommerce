@@ -147,6 +147,9 @@ body {
   }
   .carousel-images {
     display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items:center ;
      overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
