@@ -94,7 +94,6 @@ body {
 .product-detail {
   width: 100%;
   box-sizing: border-box;
-  
 }
 
 
@@ -230,6 +229,7 @@ body {
     .product-detail {
     flex-direction: column;
     gap: 20px;
+    padding: 30px;
   }
   }
 

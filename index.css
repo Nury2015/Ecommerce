@@ -27,6 +27,7 @@ nav {
     margin-bottom: 12px;
     position: sticky;
     width: 100%;
+    height: 55px;
     top: 0;
     z-index: 100;
 
@@ -42,8 +43,9 @@ nav>a {
 }
 
 .logo {
-    width: 100px;
+    width: 134px;
     margin-bottom: 16px;
+    height: 50px;
 }
 
 .navbar-right .navbar-email {
@@ -54,13 +56,26 @@ nav>a {
 
 .navbar-left {
     display: flex;
+    align-items: center;
     margin-left: 12px;
 }
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+
+}
+
 
 
 .navbar-left a {
     display: flex;
     margin-left: 12px;
+}
+
+.navbar-left img {
+    height: 56%;
+    object-fit: cover;
 }
 
 
@@ -153,7 +168,7 @@ nav>a {
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 26px;
     place-content: center;
-    
+
 }
 
 .producto-card {
@@ -213,7 +228,7 @@ footer {
     .card-container {
 
         grid-template-columns: repeat(auto-fill, 140px);
-     
+
     }
 
     .producto-card {
