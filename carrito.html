@@ -130,6 +130,7 @@
           </section>
         </div>
       </div>
+
     </aside>
 
   </div>
@@ -146,11 +147,10 @@
     const listShopping = document.getElementById('list-shopping');
     const resumen = document.getElementById('resumen-pedido');
     const productosDisponibles = JSON.parse(localStorage.getItem('productosDisponibles')) || [];
-    console.log(productosDisponibles)
-
     const sugerencias = document.querySelector(".sugerencias");
     const miniCards = document.querySelector(".card-container");
     
+  
     listShopping.innerHTML = '';
 
 
