@@ -103,7 +103,7 @@
       </div>
 
     </div>
-    
+
     <aside class="product-detail">
       <div class="title-container">
         <a href="index.html"><img src="./icons/flechita.svg" alt="Volver"></a>
@@ -150,107 +150,145 @@
 
     const sugerencias = document.querySelector(".sugerencias");
     const miniCards = document.querySelector(".card-container");
+    
+    listShopping.innerHTML = '';
 
 
+  function renderCart() {
+  cartContent.innerHTML = '';
+  listShopping.innerHTML = ''; // 👈 limpiar aside al comenzar
 
-    /* === Render principal === */
-    function renderCart() {
-      cartContent.innerHTML = '';
+  if (cart.length === 0) {
+    myOrder.style.display = 'none';
+    graciasCompra.style.display = 'none';
+    btnWhatsapp.style.display = 'none';
 
-      if (cart.length === 0) {
-        /* Carrito vacío */
-        myOrder.style.display = 'none';
-        graciasCompra.style.display = 'none';
-        btnWhatsapp.style.display = 'none';
+    cartContent.innerHTML = `
+      <div style="text-align:center;margin-top:2rem;">
+        <img src="img/carritoVacio.png" alt="Carrito vacío" style="max-width:100px;">
+        <p>Tu carrito está vacío</p>
+      </div>`;
+    mostrarSugerencias();
+    return;
+  }
 
-        cartContent.innerHTML = `
-          <div style="text-align:center;margin-top:2rem;">
-            <img src="img/carritoVacio.png" alt="Carrito vacío" style="max-width:100px;">
-            <p>Tu carrito está vacío</p>
-          </div>`;
-        mostrarSugerencias(); // Mostrar sugerencias solo cuando está vacío
-        return;
-      }
-      sugerencias.style.display = 'none';
+  sugerencias.style.display = 'none';
+  btnWhatsapp.style.display = 'flex';
 
-      /* Carrito con productos */
+  let total = 0;
+  let resumenItemsHTML = '';
 
-      btnWhatsapp.style.display = 'flex';
+  const hoy = new Date();
+  const fecha = hoy.toLocaleDateString('es-CO');
+  const totalArticulos = cart.reduce((acc, item) => acc + item.cantidad, 0);
 
-      let total = 0;
+  cart.forEach((item, index) => {
+    const subtotal = item.precio * item.cantidad;
 
-      cart.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.classList.add('shopping-cart');
-        div.innerHTML = `
-          <figure>
-            <img src="${item.img}" alt="${item.nombre}">
-          </figure>
-          <p>${item.nombre} × ${item.cantidad}</p>
-          <p><strong>$${item.precio.toLocaleString()}</strong></p>
-          <img src="./icons/icon_close.png" alt="Eliminar" data-index="${index}" class="btn-remove">`;
-        cartContent.appendChild(div);
-        total += item.precio * item.cantidad;
-
-
-        const div2 = document.createElement('div');
-        div2.classList.add('shopping-cart');
-        div2.innerHTML = `
-          <figure>
+    // 🧾 LADO IZQUIERDO
+    const div = document.createElement('div');
+    div.classList.add('shopping-cart');
+    div.innerHTML = `
+      <figure>
         <img src="${item.img}" alt="${item.nombre}">
-          </figure>
-          <p>${item.nombre} × ${item.cantidad}</p>
-          <p><strong>$${item.precio.toLocaleString()}</strong></p>
-        `;
-        listShopping.appendChild(div2);
+      </figure>
+      <div>
+        <p><strong>${item.nombre}</strong></p>
+        <p>Precio: $${item.precio.toLocaleString()}</p>
+      
+       <label>   
+    <input type="number" min="1" value="${item.cantidad}" data-index="${index}" class="input-cantidad">   
+  </label>
+      </div>
+      <img src="./icons/icon_close.png" alt="Eliminar" data-index="${index}" class="btn-remove">
+    `;
+
+    // actualiza precio con cantidad
+    cartContent.appendChild(div);
+
+    document.querySelectorAll('.input-cantidad').forEach(input => {
+  input.addEventListener('change', e => {
+    const idx = Number(e.target.dataset.index);
+    const nuevaCantidad = Number(e.target.value);
+    if (nuevaCantidad < 1) return; // prevenir valores inválidos
+    cart[idx].cantidad = nuevaCantidad;
+    localStorage.setItem('carrito', JSON.stringify(cart));
+    renderCart(); // vuelve a pintar todo
+  });
+});
 
 
-        // Fecha actual formateada tipo "25/03/21"
-        const hoy = new Date();
-        const fecha = hoy.toLocaleDateString('es-CO');
+    // 🧾 LADO DERECHO (ASIDE)
+    const div2 = document.createElement('div');
+    div2.classList.add('shopping-cart');
+    div2.innerHTML = `
+      <figure>
+        <img src="${item.img}" alt="${item.nombre}">
+      </figure>
+      <div>
+        <p><strong>${item.nombre}</strong></p>
+        <p>Subtotal: $${subtotal.toLocaleString()}</p>
+        <small>($${item.precio.toLocaleString()} c/u × ${item.cantidad})</small>
+      </div>
+    `;
+    listShopping.appendChild(div2);
 
-        // 2. Total de artículos (sumando todas las cantidades, no solo el número de productos)
-        const totalArticulos = cart.reduce((acc, item) => acc + item.cantidad, 0);
+    total += subtotal;
+  });
 
-        // 3. Insertar en el resumen
+  // ✅ Agregar TOTAL en el aside
+  const totalDiv = document.createElement('div');
+  totalDiv.classList.add('shopping-cart-total');
+  totalDiv.innerHTML = `<p><strong>Total: $${total.toLocaleString()}</strong></p>`;
+cartContent.appendChild(totalDiv);
 
-        resumen.innerHTML = `
-          <p>
-            <span>${fecha}</span> <br>
-            <span>${totalArticulos} artículo${totalArticulos > 1 ? 's' : ''}</span>
-          </p>
-          
-        `;
 
-      });
+  // ✅ Mostrar resumen (fecha + artículos) al final del render
+  resumen.innerHTML = `
+    <p>
+      <span>${fecha}</span><br>
+      <span>${totalArticulos} artículo${totalArticulos > 1 ? 's' : ''}</span>
+    </p>
+  `;
 
-      // Total
-      const totalDiv = document.createElement('div');
-      totalDiv.classList.add('total');
-      totalDiv.innerHTML = `<p><strong>Total:</strong> $${total.toLocaleString()}</p>`;
-      cartContent.appendChild(totalDiv);
+  // ✅ Eliminar productos
+  document.querySelectorAll('.btn-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const idx = Number(e.target.dataset.index);
+      cart.splice(idx, 1);
+      localStorage.setItem('carrito', JSON.stringify(cart));
+      renderCart();
+      actualizarCarritoVisual(); // <- después de eliminar
 
-      // Listeners para eliminar
-      document.querySelectorAll('.btn-remove').forEach(btn => {
-        btn.addEventListener('click', e => {
-          const idx = Number(e.target.dataset.index);
-          cart.splice(idx, 1);
-          localStorage.setItem('carrito', JSON.stringify(cart));
-          renderCart();
-        });
-      });
-    }
+    });
+  });
+}
+
 
 
     /* === WhatsApp === */
     btnWhatsapp.addEventListener('click', e => {
       e.preventDefault();
-      const numero = '573154380079'; // Cambia por tu núm real
-      const productos = cart.map(i => `${i.nombre} × ${i.cantidad}`).join(', ');
-      const total = cart.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
-      const msg = encodeURIComponent(`Hola, quiero comprar: ${productos}. Total: $${total.toLocaleString()}`);
+
+      const numero = '573154380079'; // Tu número de WhatsApp
+      let mensaje = "🛍️ *Resumen de tu pedido* 💕\n\n";
+
+      cart.forEach(item => {
+        const subtotal = item.precio * item.cantidad;
+        mensaje += ` *${item.nombre}*\n`;
+        mensaje += `Cantidad: ${item.cantidad}\n`;
+        mensaje += `Precio unitario: $${item.precio.toLocaleString()}\n`;
+        mensaje += `Subtotal: $${subtotal.toLocaleString()}\n\n`;
+      });
+
+      const total = cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+      mensaje += `💰 *Total a pagar:* $${total.toLocaleString()}\n\n`;
+      mensaje += `✅Gracias por tu compra 💖✨`;
+
+      const msg = encodeURIComponent(mensaje);
       window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
     });
+
 
     function mostrarSugerencias() {
       miniCards.innerHTML = ''; // Limpia anteriores
@@ -259,22 +297,24 @@
       sugeridos.forEach(p => {
         const div = document.createElement('div');
         div.classList.add('product-card');
-        div.innerHTML = `
-        <a href="detalleprod.html">
-                    <img src="${p.img}" alt="${p.nombre}">
-                </a>
-                <div class="informacion-producto">
-                    <div>
-                        <p>${p.nombre}</p>
-                        <p>${p.precio}</p>
-                    </div>
-                    <figure>
-                        <a href="carrito.html">
-                            <img src="icons/bt_add_to_cart.svg" alt="carrito de compra">
-                        </a>
-                    </figure>
-                </div>
-      `;
+      div.innerHTML = `
+  <a href="detalleprod.html">
+    <img src="${p.img}" alt="${p.nombre}">
+  </a>
+  <div class="informacion-producto">
+    <div>
+      <p>${p.nombre}</p>
+      <p>${p.precio}</p>
+    </div>
+    ${p.stock > 0 ? `
+    <div class="acciones-producto">
+      <input type="number" min="1" max="${p.stock}" value="1" data-id="${p.nombre}" class="input-cantidad">
+      <button class="btn-agregar" data-id="${p.nombre}">Agregar</button>
+    </div>
+    ` : `<span style="color:red;font-weight:bold;">Agotado</span>`}
+  </div>
+`;
+
         miniCards.appendChild(div);
       });
 
@@ -283,37 +323,13 @@
 
     function actualizarCarritoVisual() {
       const cartCountDiv = document.querySelector('.navbar-shopping-cart div');
-      const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+      const totalItems = cart.reduce((acc, item) => acc + item.cantidad, 0);
       cartCountDiv.textContent = totalItems;
     }
 
-    function agregarAlCarrito(nombre, precio, img) {
-      console.log(nombre, precio, img)
-      const productoExistente = carrito.find(item => item.nombre === nombre);
-      if (productoExistente) {
-        productoExistente.cantidad += 1;
-      } else {
-        carrito.push({ nombre, precio, cantidad: 1, img });
-      }
-
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      actualizarCarritoVisual();
-    }
-
-    function agregarAlCarrito(nombre, precio, img) {
-      console.log(nombre, precio, img)
-      const productoExistente = carrito.find(item => item.nombre === nombre);
-      if (productoExistente) {
-        productoExistente.cantidad += 1;
-      } else {
-        carrito.push({ nombre, precio, cantidad: 1, img });
-      }
-
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      actualizarCarritoVisual();
-    }
     /* === Init === */
     renderCart();
+    actualizarCarritoVisual()
   </script>
 </body>
 

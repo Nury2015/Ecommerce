@@ -87,6 +87,7 @@
     </div>
 
     <script>
+        const cart = JSON.parse(localStorage.getItem('carrito')) || [];
         const carouselImages = document.querySelector('.carousel-images');
         const prevBtn = document.querySelector('.prev');
         const nextBtn = document.querySelector('.next');
@@ -163,7 +164,15 @@
             carouselImages.style.transform = `translateX(${-size * counter}px)`;
         }
 
-        window.addEventListener('resize', updateCarousel);
+      
+
+           function actualizarCarritoVisual() {
+      const cartCountDiv = document.querySelector('.navbar-shopping-cart div');
+      const totalItems = cart.reduce((acc, item) => acc + item.cantidad, 0);
+      cartCountDiv.textContent = totalItems;
+    }
+  window.addEventListener('resize', updateCarousel);
+     actualizarCarritoVisual()
     </script>
 
 </body>
