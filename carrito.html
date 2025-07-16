@@ -15,7 +15,66 @@
 </head>
 
 <body>
+   <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
+    <div class="mobile-menu">
+          <ul>
+            <li>
+                <a href="index.html">CATEGORIES</a>
+            </li>
+
+            <li>
+                <a href="index.html">Tus pedidos</a>
+            </li>
+
+            <li>
+                <a href="index.html">Mascotas</a>
+            </li>
+
+            <li>
+                <a href="index.html">Hogar</a>
+            </li>
+
+            <li>
+                <a href="index.html">Belleza</a>
+            </li>
+
+            <li>
+                <a href="index.html">Juguetes</a>
+            </li>
+
+            <li>
+                <a href="index.html">Otros</a>
+            </li>
+        </ul>
+        <ul>
+            
+            <li>
+                <a href="Misordenes.html">Mis compras</a>
+            </li>
+
+            
+            <li>
+                <a href="Cuenta.html">Mi cuenta</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <a href="editar-cuenta.html" class="email">camila@ejemplo.com</a>
+            </li>
+
+            
+            <li>
+                <a href="index.html" class="sign-out">Salir</a>
+            </li>
+        </ul>
+    </div>
+  
   <nav>
     <a href="menumobile.html">
 
@@ -25,12 +84,12 @@
 
     <div class="navbar-left">
       <a href="index.html">
-        <img src="logos/logodecayba(2).png" alt="logo" class="logo">
+        <img src="logos/logodecayba (2).png" alt="logo" class="logo">
       </a>
 
       <ul>
         <li>
-          <a href="Misordenes.html">
+          <a href="misordenes.html">
             Tus pedidos
           </a>
         </li>
@@ -330,6 +389,16 @@ cartContent.appendChild(totalDiv);
     /* === Init === */
     renderCart();
     actualizarCarritoVisual()
+
+   
+     const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");     // Aquí la magia
+    mobileMenu.classList.toggle("active");
+  });
+
   </script>
 </body>
 

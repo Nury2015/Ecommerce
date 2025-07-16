@@ -6,18 +6,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página principal</title>
   <link rel="stylesheet" href="index.css" />
+  
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
 </head>
 
 
 
 <body>
+   <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <div class="mobile-menu">
+        <ul>
+        <li>
+          <a href="Misordenes.html"> Tus pedidos </a>
+        </li>
+
+        <li>
+          <a href="mascotas.html">Mascotas</a>
+        </li>
+
+        <li>
+        <a href="hogar.html">Hogar</a>
+        </li>
+
+        <li>
+          <a href="belleza.html">Belleza</a>
+        </li>
+
+        <li>
+          <a href="juguetes.html">Juguetes</a>
+        </li>
+
+        <li>
+          <a href="otros.html">Otros</a>
+        </li>
+      </ul>
+        <ul>
+            
+            <li>
+                <a href="Misordenes.html">Mis compras</a>
+            </li>
+
+            
+            <li>
+                <a href="Cuenta.html">Mi cuenta</a>
+            </li>
+        </ul>
+
+        <ul>
+            
+            <li>
+                <a href="editar-cuenta.html" class="email">camila@ejemplo.com</a>
+            </li>
+
+            
+            <li>
+                <a href="index.html" class="sign-out">salir</a>
+            </li>
+        </ul>
+    </div>
+  
 
   <div id="toast" class="toast top"></div>
    <nav>
-    <a href="menumobile.html">
-      <img src="icons/icon_menu.svg" alt="menu" class="menu" />
-    </a>
 
     <div class="navbar-left">
       <a href="index.html">
@@ -76,388 +131,388 @@
   <script>
     const cartContent = document.getElementById("card-container");
     const productos = [
-      {
-        nombre: "Peluche para perro",
-        valor: "$35.000",
-        descripcion:
-          "Juguete para Perros de Pato Peluche con Sonido - Resistente al Mordisco, Juguete Suave para Masticar para Razas Medianas y Pequeñas con efectos de Sonido Interactivos, Ideal para Jugar y Entrenamiento, Juguetes para Perros",
-        stock: 4,
-        categoria:"mascotas",
-        imagen: "img/peluche/perroabrazando.webp",
-        imgs: [
-          "img/peluche/peluche.webp",
-          "img/peluche/medidas.webp",
-          "img/peluche/perroabrazando.webp",
-          "img/peluche/perrocon.webp",
-        ],
-      },
-     {
-  nombre: "Juguete frisbee disco volador para mascotas",
-  valor: "$40.000",
-  imagen: "img/frisbi/principal.webp",
-  descripcion: "Disco Volador Duradero para Entrenamiento de Perros - Resistente a Mordidas, Juguete de Nudo de Cuerda para Limpieza Dental para Todas las Razas",
-  categoria:"mascotas",
-  stockPorColor: {
-    azul: 1,
-    morado: 1,
-    naranja: 1,
-    verde: 2,
-    amarillo: 1,
-    rojo: 1
-  },
-
-  imgs: [
-    "img/frisbi/principal.webp",
-    "img/frisbi/perro.webp",
-    "img/frisbi/medidas.webp",
-    "img/frisbi/perrocon.webp",
-    "img/frisbi/azul.webp",
-    "img/frisbi/morado.webp",
-    "img/frisbi/naranja.webp",
-    "img/frisbi/verde.webp",
-    "img/frisbi/amarillo.webp",
-    "img/frisbi/rojo.webp"
-  ]
-}
-,
-       {
-        nombre: "Juguetes para Masticar con Sonido para Cachorros",
-        valor: "$40.000",
-        imagen: "img/docepelotas/principal.webp",
-        descripcion:
-          "6/12pcs Juguetes para Masticar con Sonido para Cachorros - Bolas Interactivas de Plástico Duradero y Estrellas Texturadas, Colores Variados para Perros Pequeños y Medianos, Diseños Divertidos para Mascotas",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-          "img/docepelotas/principal.webp",
-          "img/docepelotas/imagenconperro.webp",
-          "img/docepelotas/pito.webp",
-          "img/docepelotas/medidas.webp",
-          "img/docepelotas/perrocon.webp",
-        ],
-      },
-      {
-        nombre: "Peluche pulpo para mascotas",
-        valor: "$20.000",
-        imagen: "img/pulpo/principal.webp",
-        descripcion:
-          "Juguete para Perros de Pato Peluche con Sonido - Resistente al Mordisco, Juguete Suave para Masticar para Razas Medianas y Pequeñas con efectos de Sonido Interactivos, Ideal para Jugar y Entrenamiento, Juguetes para Perros",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-          "img/pulpo/manoconpelu.webp",
-          "img/pulpo/principal.webp",
-          "img/pulpo/colores.webp",
-         "img/pulpo/medidas.webp",
-          "img/pulpo/resistente.webp" ,
-          "img/pulpo/sonido.webp",
-          "img/pulpo/sonido2.webp", 
-        ],
-      },
         {
-        nombre: "Disco Volador De Entrenamiento Para Mascotas",
-        valor: "$40.000",
-        imagen: "img/Disco volador/principal.webp",
-        descripcion:
-          "Disco Volador Duradero para Entrenamiento de Perros - Resistente a Mordidas, Juguete de Nudo de Cuerda para Limpieza Dental para Todas las Razas ",
-           stockPorColor: {
-    naranja: 2,
-    rojo: 1,
-    verde: 3,
-  },
-  categoria:"mascotas",
-        imgs: [
-          "img/Disco volador/principal.webp",
-          "img/Disco volador/medidas.webp",
-          "img/Disco volador/unidad.webp",
-          "img/Disco volador/unidaddos.webp",
-          "img/Disco volador/naranja.webp",
-          "img/Disco volador/rojo.webp",
-          "img/Disco volador/verde.webp",
-        ],
-      },
-     
-      {
-        nombre: "4 Botones para mascota",
-        valor: "$50.000",
-        imagen: "img/Boton/cuatro.webp",
-        descripcion:
-          "Botón de comunicación para mascotas, perro que habla, botón interactivo de entrenamiento de sonido, grabador de sonido, NO incluye baterias",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-          "img/Boton/cuatro.webp",
-          "img/Boton/principal.webp",
-          "img/Boton/botonHabla.webp",
-          "img/Boton/perrosboton.webp",
-          "img/Boton/perroboton.webp",
-          "img/Boton/funcion.webp",
-          "img/Boton/medidas.webp",
-        ],
-      },
-       {
-        nombre: "6 botones para mascota",
-        valor: "$72.000",
-        imagen: "img/Boton/seis.webp",
-        descripcion:
-          "Botón de comunicación para mascotas, perro que habla, botón interactivo de entrenamiento de sonido, grabador de sonido, NO incluye baterias",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-          "img/Boton/seis.webp",
-           "img/Boton/principal.webp",
-           "img/Boton/perroboton.webp",
-           "img/Boton/perrosboton.webp",
-          "img/Boton/funcion.webp",
-          "img/Boton/botonHabla.webp",
-          "img/Boton/medidas.webp",
-        ],
-      },
-        {
-        nombre: "Boton para mascota",
-        valor: "$16.000",
-        imagen: "img/Boton/principal.webp",
-        descripcion:
-          "Botón de comunicación para mascotas, perro que habla, botón interactivo de entrenamiento de sonido, grabador de sonido, NO incluye baterias",
-           stockPorColor: {
-    naranja: 0,
-    rojo: 0,
-    verde: 0,
-  },
-  categoria:"mascotas",
-        imgs: [
-          "img/Boton/principal.webp",
-          "img/Boton/azul.webp",
-          "img/Boton/naranja.webp",
-          "img/Boton/rojo.webp",
-          "img/Boton/rosa.webp",
-          "img/Boton/botonHabla.webp",
-          "img/Boton/perrosboton.webp",
-          "img/Boton/perroboton.webp",
-          "img/Boton/funcion.webp",
-          "img/Boton/medidas.webp",
-        ],
-      },
-       {
-        nombre: "3 pelotas para perros",
-        valor: "$15.000",
-        imagen: "img/Pelotas/Principal.webp",
-        descripcion:
-          "3 piezas de juguetes de pelota para perros, juguete de goma resistente y sonoro para mascotas, no tóxico y masticable, juego interactivo y salud dental, sin necesidad de batería para razas pequeñas",
-          stock: 3,
-          categoria:"mascotas",
-        imgs: [
-          "img/Pelotas/Principal.webp",
-          "img/Pelotas/perrocon.webp",
-          "img/Pelotas/cerca.webp",
-          "img/Pelotas/medidas.webp",
-          "img/Pelotas/mojada.webp",
-        ],
-      },
-      {
-        nombre: "Cepillo para mascotas",
-        valor: "20.000",
-        imagen: "img/Cepillo/pelo.webp",
-        descripcion:
-          "Peine para Mascotas de Fácil Limpieza y Confort Diario, Adecuado para Perros y Gatos con Función Desenredante, Mango Ergonómico, Peine para Pelaje y Cuidado, Gran Ayudante en la Higiene Canina",
-          stockPorColor: {
-    naranja: 1,
-    purpura: 1,
-  },
-  categoria:"mascotas",
-        imgs: [
-          "img/Cepillo/prrincipal.webp",
-          "img/Cepillo/pelo.webp",
-          "img/Cepillo/princi.webp",
-          "img/Cepillo/medidas.webp",
-          "img/Cepillo/boton.webp",
-          "img/Cepillo/princi.webp",
-          "img/Cepillo/rosado.webp",
-        ],
-      },
-      
-      {
-        nombre: "1 Distribuidor de Bolsas+ 1 rollo de bolsas",
-        valor: "$20.000",
-        imagen: "img/contenedorbolsa/principal.webp",
-        descripcion:
-          "Suministros Creativos para Mascotas: Recolector de Excrementos para Paseos de Perros, Práctico y Hermoso Distribuidor de Bolsas de Basura Portátil, Carcasa de Basura Esencial para Amantes de las Mascotas",
-           stockPorColor: {
-    blanco: 1,
-    verde: 1,
-    rojo: 1,
-    amarillo: 1,
-    azul: 1,
-    cafe: 1,
-  },
-  categoria:"mascotas",
-        imgs: [
-          "img/contenedorbolsa/princi.webp",
-          "img/contenedorbolsa/principal.webp",
-          "img/contenedorbolsa/medidas.webp",
-          "img/contenedorbolsa/cafeprinci.webp",
-          "img/contenedorbolsa/imagenpresen.webp",
-        ],
-      },
-     
-      {
-        nombre: "Entrenador de Baño para Perros",
-        valor: "$50.000",
-        imagen: "img/tepete/principal.webp",
-        descripcion:
-          " Entrenador de Baño para Perros con Césped Artificial Lavable FUKUCHONG - Tamaño Pequeño a Grande, Material Duradero EVA, Diseño Verde y Amarillo para Uso Interior/Exterior, Ideal para Tiendas de Campaña y Entrenamiento de Mascotas",
-          stock: 2,
-          categoria:"mascotas",
-        imgs: [
-          "img/tepete/principal.webp",
-          "img/tepete/especifica.webp",
-          "img/tepete/medidas.webp",
-          "img/tepete/medid.webp",
-          "img/tepete/medidagrande.webp",
-        ],
-      },
-    
-      
-      {
-        nombre: "Bolsa de entrenamiento",
-        valor: "$40.000",
-        imagen: "img/Bolsa/principal.webp",
-        descripcion:
-          " Riñonera para premios de perro con dispensador de bolsas para desechos incorporado - Bolsa de entrenamiento y alimentación de poliéster para entrenadores y dueños de mascotas, gran capacidad, diseño con clip para llevar",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-          "img/Bolsa/principal.webp",
-          "img/Bolsa/partes.webp",
-          "img/Bolsa/medidas.webp",
-          "img/Bolsa/bolsa.webp",
-          "img/Bolsa/amboslados.webp",
-        ],
-      },
-        {
-        nombre: "1pc Cepillo de baño suave para mascotas",
-        valor: "$15.000",
-        imagen: "img/cepillobaño/principal.webp",
-        descripcion:
-          "Herramienta de masaje de silicona para perros y gatos, accesorio multifuncional de baño y limpieza para animales, esenciales para el cuidado de mascotas",
-           stockPorColor: {
-    azul: 1,
-    amarillo: 1,
-  },
-  categoria:"mascotas",
-        imgs: [
-          "img/cepillobaño/principal.webp",
-          "img/cepillobaño/jabon.webp",
-          "img/cepillobaño/perros.webp",
-          "img/cepillobaño/medidas.webp",
-          "img/cepillobaño/suave.webp",
-          "img/cepillobaño/tapa.webp",
-        ],
+          nombre: "Peluche para perro",
+          valor: "$35.000",
+          descripcion:
+            "Juguete para Perros de Pato Peluche con Sonido - Resistente al Mordisco, Juguete Suave para Masticar para Razas Medianas y Pequeñas con efectos de Sonido Interactivos, Ideal para Jugar y Entrenamiento, Juguetes para Perros",
+          stock: 4,
+          categoria: "mascotas",
+          imagen: "img/peluche/perroabrazando.webp",
+          imgs: [
+            "img/peluche/peluche.webp",
+            "img/peluche/medidas.webp",
+            "img/peluche/perroabrazando.webp",
+            "img/peluche/perrocon.webp",
+          ],
         },
-      {
-        nombre: "Cepillo recargable para Mascota",
-        valor: "$40.000",
-        imagen: "img/Cepillo para mascotas/principal.webp",
-        descripcion:
-          "Peine para Mascotas de Fácil Limpieza y Confort Diario, Adecuado para Perros y Gatos con Función Desenredante, Mango Ergonómico, Peine para Pelaje y Cuidado, Gran Ayudante en la Higiene Canina-color naranja",
-          stock: 0,
-          categoria:"mascotas",
-        imgs: ["img/Cepillo para mascotas/principal.webp", "img/Cepillo para mascotas/perros y gatos.webp", "img/Cepillo para mascotas/medidas.webp", "img/Cepillo para mascotas/sistema.webp", "img/Cepillo para mascotas/sistema2.webp"
-        ],
-      },
-      {
-        nombre: "Cepillo recargable para Mascota",
-        valor: "$40.000",
-        imagen:  "img/cepillovapormorado/vapor.webp",
-        descripcion:
-          "Peine para Mascotas de Fácil Limpieza y Confort Diario, Adecuado para Perros y Gatos con Función Desenredante, Mango Ergonómico, Peine para Pelaje y Cuidado, Gran Ayudante en la Higiene Canina- color purpura",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-        "img/cepillovapormorado/vapor.webp",
-        "img/cepillovapormorado/principal.webp", 
-        "img/cepillovapormorado/medidas.webp", 
-       "img/cepillovapormorado/girarmanija.webp", 
-       "img/cepillovapormorado/gato.webp",
-       "img/cepillovapormorado/cepillando.webp",
-       "img/cepillovapormorado/cargador.webp",
-       "img/cepillovapormorado/agua.webp" 
-        ],
-      },
-      
-      {
-        nombre: "Comedero para perro",
-        valor: "$150.000",
-        imagen: "img/comedero/negro.webp",
-        descripcion:
-          " 1 Juego de Comederos Elevados para Perros, Estante con 4 Alturas Ajustables y 2 Boles de Acero Inoxidable, Sin Deslizamiento para Razas Pequeñas",
-           stockPorColor: {
-    rosa: 1,
-   negro: 1,
-  },
-  categoria:"mascotas",
-        imgs: [
-          "img/comedero/principal.webp",
-          "img/comedero/perrocon.webp",
-          "img/comedero/caracteristicas.webp",
-          "img/comedero/negro.webp",
-          "img/comedero/partes.webp",
-          "img/comedero/taza.webp",
-        ],
-      },
-      
-      {
-        nombre: "Bolsas para excrementos de Perro",
-        valor: "$40.000",
-        imagen: "img/bolsas/principal.webp",
-        descripcion:
-          "210 Bolsas para Excrementos de Perro a Prueba de Fugas con Diseño de Huellas, 14 Rollos-210 bolsas - Bolsas de Plástico Duraderas para Limpieza de Mascotas y Uso Exterior",
-          stock: 2,
-          categoria:"mascotas",
-        imgs: [
-          "img/bolsas/division.webp",
-          "img/bolsas/principal.webp",
-          "img/bolsas/medidas.webp",
-          "img/bolsas/perrocon.webp",
-          "img/bolsas/bolsa.webp",
-        ],
-      },
-      {
-        nombre: "Bálsamo Hidratante huellas y nariz",
-        valor: "$10.000",
-        imagen: "img/balsamo/principal.webp",
-        descripcion:
-          "Crema Anti-Grietas para Garras y Uñas de Mascotas - Bálsamo Hidratante Rápido para Perros y Gatos, Fijación Fuerte, Previene Grietas y Roturas, Suaviza Patas y Nariz - Tubo de 20g para Mascotas Pequeñas a Grandes, Textura Suave, Fórmula Nutritiva, Amigable con las Mascotas, Para Dueños de Perros",
-          stock: 1,
-          categoria:"mascotas",
-        imgs: [
-          "img/balsamo/principal.webp",
-          "img/balsamo/gatoyperro.webp",
-          "img/balsamo/medidas.webp",
-          "img/balsamo/caja.webp",
-          "img/balsamo/perrocon.webp",
-          "img/balsamo/princi.webp",
-        ],
-      },
-      {
-        nombre: "3 piezas Cepillo de dientes para mascotas",
-        valor: "$10.000",
-        imagen: "img/cepillodientes/principal.webp",
-        descripcion:
-          "Conjunto de 4 Cepillos para Dientes de Mascotas con Cerdas Suaves y Mangos Ergonómicos Antideslizantes para un Cuidado Dental Amable - Rosa, Verde, Amarillo, Blanco",
-          stock: 5,
-          categoria:"mascotas",
-        imgs: [
-          "img/cepillodientes/principal.webp",
-          "img/cepillodientes/perrocon.webp",
-          "img/cepillodientes/medidas.webp",
-          "img/cepillodientes/dientes.webp",
-          "img/cepillodientes/flexible.webp",
-          "img/cepillodientes/cerca.webp",
+        {
+          nombre: "Juguete frisbee disco volador para mascotas",
+          valor: "$40.000",
+          imagen: "img/frisbi/principal.webp",
+          descripcion: "Disco Volador Duradero para Entrenamiento de Perros - Resistente a Mordidas, Juguete de Nudo de Cuerda para Limpieza Dental para Todas las Razas",
+          categoria: "mascotas",
+          stock: {
+            azul: 1,
+            morado: 1,
+            naranja: 1,
+            verde: 2,
+            amarillo: 1,
+            rojo: 1
+          },
 
-        ],
-      },
-    ];
+          imgs: [
+            "img/frisbi/principal.webp",
+            "img/frisbi/perro.webp",
+            "img/frisbi/medidas.webp",
+            "img/frisbi/perrocon.webp",
+            "img/frisbi/azul.webp",
+            "img/frisbi/morado.webp",
+            "img/frisbi/naranja.webp",
+            "img/frisbi/verde.webp",
+            "img/frisbi/amarillo.webp",
+            "img/frisbi/rojo.webp"
+          ]
+        }
+        ,
+        {
+          nombre: "Juguetes para Masticar con Sonido para Cachorros",
+          valor: "$40.000",
+          imagen: "img/docepelotas/principal.webp",
+          descripcion:
+            "6/12pcs Juguetes para Masticar con Sonido para Cachorros - Bolas Interactivas de Plástico Duradero y Estrellas Texturadas, Colores Variados para Perros Pequeños y Medianos, Diseños Divertidos para Mascotas",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/docepelotas/principal.webp",
+            "img/docepelotas/imagenconperro.webp",
+            "img/docepelotas/pito.webp",
+            "img/docepelotas/medidas.webp",
+            "img/docepelotas/perrocon.webp",
+          ],
+        },
+        {
+          nombre: "Peluche pulpo para mascotas",
+          valor: "$20.000",
+          imagen: "img/pulpo/principal.webp",
+          descripcion:
+            "Juguete para Perros de Pato Peluche con Sonido - Resistente al Mordisco, Juguete Suave para Masticar para Razas Medianas y Pequeñas con efectos de Sonido Interactivos, Ideal para Jugar y Entrenamiento, Juguetes para Perros",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/pulpo/manoconpelu.webp",
+            "img/pulpo/principal.webp",
+            "img/pulpo/colores.webp",
+            "img/pulpo/medidas.webp",
+            "img/pulpo/resistente.webp",
+            "img/pulpo/sonido.webp",
+            "img/pulpo/sonido2.webp",
+          ],
+        },
+        {
+          nombre: "Disco Volador De Entrenamiento Para Mascotas",
+          valor: "$40.000",
+          imagen: "img/Disco volador/principal.webp",
+          descripcion:
+            "Disco Volador Duradero para Entrenamiento de Perros - Resistente a Mordidas, Juguete de Nudo de Cuerda para Limpieza Dental para Todas las Razas ",
+          stock: {
+            naranja: 2,
+            rojo: 1,
+            verde: 3,
+          },
+          categoria: "mascotas",
+          imgs: [
+            "img/Disco volador/principal.webp",
+            "img/Disco volador/medidas.webp",
+            "img/Disco volador/unidad.webp",
+            "img/Disco volador/unidaddos.webp",
+            "img/Disco volador/naranja.webp",
+            "img/Disco volador/rojo.webp",
+            "img/Disco volador/verde.webp",
+          ],
+        },
+
+        {
+          nombre: "4 Botones para mascota",
+          valor: "$50.000",
+          imagen: "img/Boton/cuatro.webp",
+          descripcion:
+            "Botón de comunicación para mascotas, perro que habla, botón interactivo de entrenamiento de sonido, grabador de sonido, NO incluye baterias",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/Boton/cuatro.webp",
+            "img/Boton/principal.webp",
+            "img/Boton/botonHabla.webp",
+            "img/Boton/perrosboton.webp",
+            "img/Boton/perroboton.webp",
+            "img/Boton/funcion.webp",
+            "img/Boton/medidas.webp",
+          ],
+        },
+        {
+          nombre: "6 botones para mascota",
+          valor: "$72.000",
+          imagen: "img/Boton/seis.webp",
+          descripcion:
+            "Botón de comunicación para mascotas, perro que habla, botón interactivo de entrenamiento de sonido, grabador de sonido, NO incluye baterias",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/Boton/seis.webp",
+            "img/Boton/principal.webp",
+            "img/Boton/perroboton.webp",
+            "img/Boton/perrosboton.webp",
+            "img/Boton/funcion.webp",
+            "img/Boton/botonHabla.webp",
+            "img/Boton/medidas.webp",
+          ],
+        },
+        {
+          nombre: "Boton para mascota",
+          valor: "$16.000",
+          imagen: "img/Boton/principal.webp",
+          descripcion:
+            "Botón de comunicación para mascotas, perro que habla, botón interactivo de entrenamiento de sonido, grabador de sonido, NO incluye baterias",
+          stock: {
+            naranja: 0,
+            rojo: 0,
+            verde: 0,
+          },
+          categoria: "mascotas",
+          imgs: [
+            "img/Boton/principal.webp",
+            "img/Boton/azul.webp",
+            "img/Boton/naranja.webp",
+            "img/Boton/rojo.webp",
+            "img/Boton/rosa.webp",
+            "img/Boton/botonHabla.webp",
+            "img/Boton/perrosboton.webp",
+            "img/Boton/perroboton.webp",
+            "img/Boton/funcion.webp",
+            "img/Boton/medidas.webp",
+          ],
+        },
+        {
+          nombre: "3 pelotas para perros",
+          valor: "$15.000",
+          imagen: "img/Pelotas/Principal.webp",
+          descripcion:
+            "3 piezas de juguetes de pelota para perros, juguete de goma resistente y sonoro para mascotas, no tóxico y masticable, juego interactivo y salud dental, sin necesidad de batería para razas pequeñas",
+          stock: 3,
+          categoria: "mascotas",
+          imgs: [
+            "img/Pelotas/Principal.webp",
+            "img/Pelotas/perrocon.webp",
+            "img/Pelotas/cerca.webp",
+            "img/Pelotas/medidas.webp",
+            "img/Pelotas/mojada.webp",
+          ],
+        },
+        {
+          nombre: "Cepillo para mascotas",
+          valor: "20.000",
+          imagen: "img/Cepillo/pelo.webp",
+          descripcion:
+            "Peine para Mascotas de Fácil Limpieza y Confort Diario, Adecuado para Perros y Gatos con Función Desenredante, Mango Ergonómico, Peine para Pelaje y Cuidado, Gran Ayudante en la Higiene Canina",
+          stock: {
+            naranja: 1,
+            purpura: 1,
+          },
+          categoria: "mascotas",
+          imgs: [
+            "img/Cepillo/prrincipal.webp",
+            "img/Cepillo/pelo.webp",
+            "img/Cepillo/princi.webp",
+            "img/Cepillo/medidas.webp",
+            "img/Cepillo/boton.webp",
+            "img/Cepillo/princi.webp",
+            "img/Cepillo/rosado.webp",
+          ],
+        },
+
+        {
+          nombre: "1 Distribuidor de Bolsas+ 1 rollo de bolsas",
+          valor: "$20.000",
+          imagen: "img/contenedorbolsa/principal.webp",
+          descripcion:
+            "Suministros Creativos para Mascotas: Recolector de Excrementos para Paseos de Perros, Práctico y Hermoso Distribuidor de Bolsas de Basura Portátil, Carcasa de Basura Esencial para Amantes de las Mascotas",
+          stock: {
+            blanco: 1,
+            verde: 1,
+            rojo: 1,
+            amarillo: 1,
+            azul: 1,
+            cafe: 1,
+          },
+          categoria: "mascotas",
+          imgs: [
+            "img/contenedorbolsa/princi.webp",
+            "img/contenedorbolsa/principal.webp",
+            "img/contenedorbolsa/medidas.webp",
+            "img/contenedorbolsa/cafeprinci.webp",
+            "img/contenedorbolsa/imagenpresen.webp",
+          ],
+        },
+
+        {
+          nombre: "Entrenador de Baño para Perros",
+          valor: "$50.000",
+          imagen: "img/tepete/principal.webp",
+          descripcion:
+            " Entrenador de Baño para Perros con Césped Artificial Lavable FUKUCHONG - Tamaño Pequeño a Grande, Material Duradero EVA, Diseño Verde y Amarillo para Uso Interior/Exterior, Ideal para Tiendas de Campaña y Entrenamiento de Mascotas",
+          stock: 2,
+          categoria: "mascotas",
+          imgs: [
+            "img/tepete/principal.webp",
+            "img/tepete/especifica.webp",
+            "img/tepete/medidas.webp",
+            "img/tepete/medid.webp",
+            "img/tepete/medidagrande.webp",
+          ],
+        },
+
+
+        {
+          nombre: "Bolsa de entrenamiento",
+          valor: "$40.000",
+          imagen: "img/Bolsa/principal.webp",
+          descripcion:
+            " Riñonera para premios de perro con dispensador de bolsas para desechos incorporado - Bolsa de entrenamiento y alimentación de poliéster para entrenadores y dueños de mascotas, gran capacidad, diseño con clip para llevar",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/Bolsa/principal.webp",
+            "img/Bolsa/partes.webp",
+            "img/Bolsa/medidas.webp",
+            "img/Bolsa/bolsa.webp",
+            "img/Bolsa/amboslados.webp",
+          ],
+        },
+        {
+          nombre: "1pc Cepillo de baño suave para mascotas",
+          valor: "$15.000",
+          imagen: "img/cepillobaño/principal.webp",
+          descripcion:
+            "Herramienta de masaje de silicona para perros y gatos, accesorio multifuncional de baño y limpieza para animales, esenciales para el cuidado de mascotas",
+          stock: {
+            azul: 1,
+            amarillo: 1,
+          },
+          categoria: "mascotas",
+          imgs: [
+            "img/cepillobaño/principal.webp",
+            "img/cepillobaño/jabon.webp",
+            "img/cepillobaño/perros.webp",
+            "img/cepillobaño/medidas.webp",
+            "img/cepillobaño/suave.webp",
+            "img/cepillobaño/tapa.webp",
+          ],
+        },
+        {
+          nombre: "Cepillo recargable para Mascota",
+          valor: "$40.000",
+          imagen: "img/Cepillo para mascotas/principal.webp",
+          descripcion:
+            "Peine para Mascotas de Fácil Limpieza y Confort Diario, Adecuado para Perros y Gatos con Función Desenredante, Mango Ergonómico, Peine para Pelaje y Cuidado, Gran Ayudante en la Higiene Canina-color naranja",
+          stock: 0,
+          categoria: "mascotas",
+          imgs: ["img/Cepillo para mascotas/principal.webp", "img/Cepillo para mascotas/perros y gatos.webp", "img/Cepillo para mascotas/medidas.webp", "img/Cepillo para mascotas/sistema.webp", "img/Cepillo para mascotas/sistema2.webp"
+          ],
+        },
+        {
+          nombre: "Cepillo recargable para Mascota",
+          valor: "$40.000",
+          imagen: "img/cepillovapormorado/vapor.webp",
+          descripcion:
+            "Peine para Mascotas de Fácil Limpieza y Confort Diario, Adecuado para Perros y Gatos con Función Desenredante, Mango Ergonómico, Peine para Pelaje y Cuidado, Gran Ayudante en la Higiene Canina- color purpura",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/cepillovapormorado/vapor.webp",
+            "img/cepillovapormorado/principal.webp",
+            "img/cepillovapormorado/medidas.webp",
+            "img/cepillovapormorado/girarmanija.webp",
+            "img/cepillovapormorado/gato.webp",
+            "img/cepillovapormorado/cepillando.webp",
+            "img/cepillovapormorado/cargador.webp",
+            "img/cepillovapormorado/agua.webp"
+          ],
+        },
+
+        {
+          nombre: "Comedero para perro",
+          valor: "$150.000",
+          imagen: "img/comedero/negro.webp",
+          descripcion:
+            " 1 Juego de Comederos Elevados para Perros, Estante con 4 Alturas Ajustables y 2 Boles de Acero Inoxidable, Sin Deslizamiento para Razas Pequeñas",
+          stock: {
+            rosa: 1,
+            negro: 1,
+          },
+          categoria: "mascotas",
+          imgs: [
+            "img/comedero/principal.webp",
+            "img/comedero/perrocon.webp",
+            "img/comedero/caracteristicas.webp",
+            "img/comedero/negro.webp",
+            "img/comedero/partes.webp",
+            "img/comedero/taza.webp",
+          ],
+        },
+
+        {
+          nombre: "Bolsas para excrementos de Perro",
+          valor: "$40.000",
+          imagen: "img/bolsas/principal.webp",
+          descripcion:
+            "210 Bolsas para Excrementos de Perro a Prueba de Fugas con Diseño de Huellas, 14 Rollos-210 bolsas - Bolsas de Plástico Duraderas para Limpieza de Mascotas y Uso Exterior",
+          stock: 2,
+          categoria: "mascotas",
+          imgs: [
+            "img/bolsas/division.webp",
+            "img/bolsas/principal.webp",
+            "img/bolsas/medidas.webp",
+            "img/bolsas/perrocon.webp",
+            "img/bolsas/bolsa.webp",
+          ],
+        },
+        {
+          nombre: "Bálsamo Hidratante huellas y nariz",
+          valor: "$10.000",
+          imagen: "img/balsamo/principal.webp",
+          descripcion:
+            "Crema Anti-Grietas para Garras y Uñas de Mascotas - Bálsamo Hidratante Rápido para Perros y Gatos, Fijación Fuerte, Previene Grietas y Roturas, Suaviza Patas y Nariz - Tubo de 20g para Mascotas Pequeñas a Grandes, Textura Suave, Fórmula Nutritiva, Amigable con las Mascotas, Para Dueños de Perros",
+          stock: 1,
+          categoria: "mascotas",
+          imgs: [
+            "img/balsamo/principal.webp",
+            "img/balsamo/gatoyperro.webp",
+            "img/balsamo/medidas.webp",
+            "img/balsamo/caja.webp",
+            "img/balsamo/perrocon.webp",
+            "img/balsamo/princi.webp",
+          ],
+        },
+        {
+          nombre: "3 piezas Cepillo de dientes para mascotas",
+          valor: "$10.000",
+          imagen: "img/cepillodientes/principal.webp",
+          descripcion:
+            "Conjunto de 4 Cepillos para Dientes de Mascotas con Cerdas Suaves y Mangos Ergonómicos Antideslizantes para un Cuidado Dental Amable - Rosa, Verde, Amarillo, Blanco",
+          stock: 5,
+          categoria: "mascotas",
+          imgs: [
+            "img/cepillodientes/principal.webp",
+            "img/cepillodientes/perrocon.webp",
+            "img/cepillodientes/medidas.webp",
+            "img/cepillodientes/dientes.webp",
+            "img/cepillodientes/flexible.webp",
+            "img/cepillodientes/cerca.webp",
+
+          ],
+        },
+      ];
 function renderCart() {
   productos.forEach((item, index) => {
     const div = document.createElement("div");
@@ -478,6 +533,7 @@ function renderCart() {
           <p>${item.nombre}</p>
           <p>${item.valor}</p>
           ${item.stock > 0
+          
               ? `
           <div class="acciones-producto">
             <input type="number" min="1" max="${item.stock}" value="1" data-id="${item.nombre}" class="input-cantidad">
@@ -675,10 +731,15 @@ function mostrarToast(mensaje, tipo = "success") {
       });
     });
 
-
-
-
     actualizarCarritoVisual();
+
+     const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");     // Aquí la magia
+    mobileMenu.classList.toggle("active");
+  });
   </script>
 </body>
 

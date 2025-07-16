@@ -9,9 +9,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="style_contraseña.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+         <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <div class="mobile-menu">
+        <ul>
+        <li>
+          <a href="Misordenes.html"> Tus pedidos </a>
+        </li>
+
+        <li>
+          <a href="mascotas.html">Mascotas</a>
+        </li>
+
+        <li>
+        <a href="hogar.html">Hogar</a>
+        </li>
+
+        <li>
+          <a href="belleza.html">Belleza</a>
+        </li>
+
+        <li>
+          <a href="juguetes.html">Juguetes</a>
+        </li>
+
+        <li>
+          <a href="otros.html">Otros</a>
+        </li>
+      </ul>
+        <ul>
+            
+            <li>
+                <a href="Misordenes.html">Mis compras</a>
+            </li>
+
+            
+            <li>
+                <a href="Cuenta.html">Mi cuenta</a>
+            </li>
+        </ul>
+
+        <ul>
+            
+            <li>
+                <a href="editar-cuenta.html" class="email">camila@ejemplo.com</a>
+            </li>
+
+            
+            <li>
+                <a href="index.html" class="sign-out">salir</a>
+            </li>
+        </ul>
+    </div>
     <div class="login">
         <div class="form-container">
             <img src="logos/logodecayba (2).png" alt="logo" class="logo">
@@ -33,7 +90,17 @@
 
 
     </div>
+<script>
+    const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
 
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");     // Aquí la magia
+    mobileMenu.classList.toggle("active");
+  });
+  </script>
+
+  <footer>© <span id="year"></span> DECAYBA · Hecho con ❤</footer>
 </body>
 
 </html>

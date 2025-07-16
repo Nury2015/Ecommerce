@@ -6,19 +6,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="editar-cuenta.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-    <script>
-        function redirectToUrl() {
-            window.location.href = 'index.html';
-        }
-    </script>
+    
 </head>
 
 <body>
+ <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
+    <div class="mobile-menu">
+        <ul>
+        <li>
+          <a href="Misordenes.html"> Tus pedidos </a>
+        </li>
+
+        <li>
+          <a href="mascotas.html">Mascotas</a>
+        </li>
+
+        <li>
+        <a href="hogar.html">Hogar</a>
+        </li>
+
+        <li>
+          <a href="belleza.html">Belleza</a>
+        </li>
+
+        <li>
+          <a href="juguetes.html">Juguetes</a>
+        </li>
+
+        <li>
+          <a href="otros.html">Otros</a>
+        </li>
+      </ul>
+        <ul>
+            
+            <li>
+                <a href="Misordenes.html">Mis compras</a>
+            </li>
+
+            
+            <li>
+                <a href="Cuenta.html">Mi cuenta</a>
+            </li>
+        </ul>
+
+        <ul>
+            
+            <li>
+                <a href="editar-cuenta.html" class="email">camila@ejemplo.com</a>
+            </li>
+
+            
+            <li>
+                <a href="index.html" class="sign-out">salir</a>
+            </li>
+        </ul>
+    </div>
+     <nav>
+   
+
+    <div class="navbar-left">
+      <a href="index.html">
+        <img src="logos/logodecayba (2).png" alt="logo" class="logo" />
+      </a>
+
+      <ul>
+        <li>
+          <a href="Misordenes.html"> Tus pedidos </a>
+        </li>
+
+        <li>
+          <a href="mascotas.html">Mascotas</a>
+        </li>
+
+        <li>
+          <a href="hogar.html">Hogar y cocina</a>
+        </li>
+
+        <li>
+          <a href="belleza.html">Belleza</a>
+        </li>
+
+        <li>
+          <a href="juguetes.html">Juguetes</a>
+        </li>
+
+        <li>
+          <a href="otros.html">Otros</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">
+          <a href="editar-cuenta.html"> camila@gmail.com </a>
+        </li>
+
+        <li class="navbar-shopping-cart">
+          <a id="ver-carrito">
+            <img src="icons/icon_shopping_cart.svg" alt="shopping cart" />
+            <div>0</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
     <div class="cuenta">
         <div class="form-container">
             <h1 class="title">Mi cuenta</h1>
@@ -52,8 +154,23 @@
             </form>
         </div>
     </div>
+<script>
 
+      
 
+    const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");     // Aquí la magia
+    mobileMenu.classList.toggle("active");
+  });
+
+   function redirectToUrl() {
+            window.location.href = 'index.html';
+        }
+  </script>
+<footer>© <span id="year"></span> DECAYBA · Hecho con ❤</footer>
 </body>
 
 </html>

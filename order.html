@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    
     <div class="my-order" id="orders-list">
         <div class="my-order-container">
 
@@ -41,7 +42,15 @@
 
     </div>
 
+<script>
+    const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
 
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");     // Aquí la magia
+    mobileMenu.classList.toggle("active");
+  });
+</script>
 </body>
 
 </html>

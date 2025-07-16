@@ -6,12 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="email.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+     <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+    <div class="mobile-menu">
+        <ul>
+        <li>
+          <a href="Misordenes.html"> Tus pedidos </a>
+        </li>
+
+        <li>
+          <a href="mascotas.html">Mascotas</a>
+        </li>
+
+        <li>
+        <a href="hogar.html">Hogar</a>
+        </li>
+
+        <li>
+          <a href="belleza.html">Belleza</a>
+        </li>
+
+        <li>
+          <a href="juguetes.html">Juguetes</a>
+        </li>
+
+        <li>
+          <a href="otros.html">Otros</a>
+        </li>
+      </ul>
+        <ul>
+            
+            <li>
+                <a href="Misordenes.html">Mis compras</a>
+            </li>
+
+            
+            <li>
+                <a href="Cuenta.html">Mi cuenta</a>
+            </li>
+        </ul>
+
+        <ul>
+            
+            <li>
+                <a href="editar-cuenta.html" class="email">camila@ejemplo.com</a>
+            </li>
+
+            
+            <li>
+                <a href="index.html" class="sign-out">salir</a>
+            </li>
+        </ul>
+    </div>
     <div class="login">
         <div class="form-container">
 
@@ -30,9 +87,15 @@
                 <span> No recibí el correo electrónico</span>
                 <a href="email.html">Reenviar</a>
             </p>
+<script>
+    const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
 
-
-
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");     // Aquí la magia
+    mobileMenu.classList.toggle("active");
+  });
+</script>
 </body>
 
 </html>
